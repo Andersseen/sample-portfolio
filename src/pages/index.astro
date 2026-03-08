@@ -4,38 +4,45 @@ import LavaLamp from '@/components/LavaLamp';
 import Skills from '@/components/skills';
 import Contact from '@/components/contact';
 import WaveDivider from '@/components/WaveDivider.astro';
-import { CONTENT } from '@/data/content';
 import About from '@/components/About';
-
-
-
+import { CONTENT } from '@/data/content';
+import '../components/Hero.scss';
 ---
 
 <MainLayout title="Portfolio">
-  <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center relative">
+  <section class="hero">
     <LavaLamp client:load />
-    <div class="z-10 text-secondary">
-      <h1 class="text-6xl font-bold mb-4">{CONTENT.hero.title}</h1>
-      <p class="text-xl">{CONTENT.hero.subtitle}</p>
+    <div class="hero__content">
+      <h1 class="hero__title">{CONTENT.hero.title}</h1>
+      <p class="hero__subtitle">{CONTENT.hero.subtitle}</p>
     </div>
   </section>
-  <WaveDivider/>
+  <WaveDivider />
 
   <div class="relative">
     <div class="sticky top-0">
-      <About client:only /> 
+      <About client:only="react" />
     </div>
     <div class="sticky top-0">
-        <!-- Skills Section -->
-      <Skills client:only /> 
+      <Skills client:only="react" />
     </div>
     <div class="sticky top-0">
-        <!-- Contact Section -->
       <Contact client:load />
     </div>
-
-</div>
-  <!-- Skills Section -->
-
+  </div>
 </MainLayout>
+
+<style lang="scss">
+  .relative {
+    position: relative;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 0;
+  }
+
+  .top-0 {
+    top: 0;
+  }
+</style>

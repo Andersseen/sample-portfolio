@@ -1,4 +1,6 @@
 ---
+import './ProgressBar.scss';
+
 interface Props {
   skill: string;
   percentage: number;
@@ -7,67 +9,49 @@ interface Props {
 const { skill, percentage } = Astro.props;
 ---
 
-<div class="mb-6">
-  <div class="flex justify-between mb-2">
-    <span class="text-gray-700 dark:text-gray-300 font-medium">{skill}</span>
-    <span class="text-gray-500 dark:text-gray-400">{percentage}%</span>
+<div class="progress-bar">
+  <div class="progress-bar__header">
+    <span class="progress-bar__label">{skill}</span>
+    <span class="progress-bar__value">{percentage}%</span>
   </div>
-  <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-    <div 
-      class="h-full bg-gradient-to-r from-[#835eff] to-[#ff008d] rounded-full transition-all duration-1000 ease-out opacity-0"
+  <div class="progress-bar__track">
+    <div
+      class="progress-bar__fill"
       style={`width: ${percentage}%`}
       data-percentage={percentage}
-    >
-    </div>
+    ></div>
   </div>
 </div>
 
 <script>
   function animateProgressBars() {
-    const bars = document.querySelectorAll('[data-percentage]');
+    const bars = document.querySelectorAll<HTMLElement>('[data-percentage]');
     bars.forEach(bar => {
-      bar.setAttribute('style', 'width: 0%');
-      setTimeout(() => {
-        const percentage = bar.getAttribute('data-percentage');
-        bar.setAttribute('style', `width: ${percentage}%`);
-        bar.classList.remove('opacity-0');
-      }, 100);
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        const percentage = bar.dataset.percentage;
+        bar.style.width = `${percentage}%`;
+        bar.classList.add('progress-bar__fill--visible');
+      });
     });
   }
 
-  // Wait for DOM to be ready
-  document.addEventListener('DOMContentLoaded', () => {
-    const skillsSection = document.querySelector('.skills-section');
-    
-    if (skillsSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateProgressBars();
-            observer.disconnect();
-          }
-        });
+  function observeSkillsSection() {
+    const skillsSection = document.querySelector('.skills');
+    if (!skillsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateProgressBars();
+          observer.disconnect();
+        }
       });
+    });
 
-      observer.observe(skillsSection);
-    }
-  });
+    observer.observe(skillsSection);
+  }
 
-  // Handle view transitions
-  document.addEventListener('astro:page-load', () => {
-    const skillsSection = document.querySelector('.skills-section');
-    
-    if (skillsSection) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateProgressBars();
-            observer.disconnect();
-          }
-        });
-      });
-
-      observer.observe(skillsSection);
-    }
-  });
+  document.addEventListener('DOMContentLoaded', observeSkillsSection);
+  document.addEventListener('astro:page-load', observeSkillsSection);
 </script>

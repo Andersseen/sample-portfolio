@@ -1,0 +1,71 @@
+@use "variables" as *;
+
+// ======================
+// Responsive Mixins
+// ======================
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// ======================
+// Glass Morphism
+// ======================
+
+@mixin glass-morphism {
+  background: rgba($color-white, 0.1);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  transition: background $transition-fast;
+
+  &:hover {
+    background: rgba($color-white, 0.2);
+  }
+}
+
+// ======================
+// Flex Helpers
+// ======================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// ======================
+// Gradient
+// ======================
+
+@mixin gradient-mark {
+  background: linear-gradient(to right, $color-mark, $color-secondary);
+}
+
+@mixin gradient-accent {
+  background: linear-gradient(
+    to right,
+    $color-accent-purple,
+    $color-accent-pink
+  );
+}

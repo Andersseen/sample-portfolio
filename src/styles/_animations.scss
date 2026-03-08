@@ -1,0 +1,113 @@
+// ======================
+// Blob & Wobble Animations
+// ======================
+
+@keyframes blob-one {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-600%);
+  }
+}
+
+@keyframes blob-two {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-420%);
+  }
+}
+
+@keyframes blob-three {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-305%);
+  }
+}
+
+@keyframes blob-four {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-465%);
+  }
+}
+
+@keyframes blob-five {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-700%);
+  }
+}
+
+@keyframes blob-six {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-700%);
+  }
+}
+
+@keyframes blob-seven {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-300%);
+  }
+}
+
+@keyframes wobble {
+  50% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  100% {
+    border-radius: 38% 52% 75% 36% / 50% 40% 50% 60%;
+  }
+}
+
+// ======================
+// Marquee Animation (Skills)
+// ======================
+
+@keyframes marquee-sm {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -340%;
+  }
+}
+
+@keyframes marquee-md {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -355%;
+  }
+}
+
+@keyframes marquee-lg {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -300%;
+  }
+}

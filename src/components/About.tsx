@@ -1,28 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
+import "./About.scss";
 
 const About = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    lottie.loadAnimation({
-      container: document.getElementById("lottie-container") as HTMLElement,
+    if (!containerRef.current) return;
+
+    const animation = lottie.loadAnimation({
+      container: containerRef.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
-      path: "/about-animation.json", // Reemplaza con la ruta de tu animación
+      path: "/about-animation.json",
     });
+
+    return () => animation.destroy();
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row items-center min-h-screen p-6 bg-primary">
-      {/* Contenedor de la animación */}
-      <div className="w-full md:w-1/2 flex justify-center items-center">
-        <div id="lottie-container" className="w-full h-full max-w-lg"></div>
+    <section className="about">
+      <div className="about__animation">
+        <div ref={containerRef} className="about__lottie" />
       </div>
-
-      {/* Contenedor del texto */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center text-center md:text-left p-6">
-        <h1 className="text-4xl font-bold text-mark mb-4">About Us</h1>
-        <p className="text-lg text-secondary">
+      <div className="about__text">
+        <h2 className="about__title">About Us</h2>
+        <p className="about__description">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut

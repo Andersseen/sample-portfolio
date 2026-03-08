@@ -1,0 +1,27 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+// ======================
+// Block: wave-divider
+// ======================
+
+.wave-divider {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background-color: $color-primary;
+
+  &__svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 60px;
+
+    @include respond-to(md) {
+      height: 150px;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ======================
+// Block: contact
+// ======================
+
+.contact {
+  &__radial-bg {
+    position: absolute;
+    height: 375px;
+    width: 750px;
+    border-radius: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      closest-side,
+      #{$color-background} 82%,
+      $color-secondary
+    );
+    top: calc(400% - 96px);
+
+    @include respond-to(sm) {
+      width: 1536px;
+      height: 768px;
+      top: calc(200% - 20px);
+    }
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  &__title-inner {
+    display: inline-flex;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-align: center;
+    display: inline-flex;
+    color: $color-secondary;
+
+    @include respond-to(sm) {
+      font-size: 8rem;
+    }
+  }
+
+  &__draggable {
+    position: absolute;
+    display: none;
+
+    @include respond-to(sm) {
+      display: inline;
+    }
+
+    &--cursor {
+      right: 478px;
+      top: 108px;
+    }
+
+    &--message {
+      left: 498px;
+      top: 128px;
+    }
+  }
+
+  &__draggable-img {
+    max-width: none;
+    width: 200px;
+    height: 200px;
+  }
+}

@@ -1,0 +1,44 @@
+@use "../styles/variables" as *;
+@use "../styles/mixins" as *;
+
+// ======================
+// Block: progress-bar
+// ======================
+
+.progress-bar {
+  margin-bottom: 1.5rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  &__label {
+    font-weight: 500;
+    color: $color-gray-700;
+  }
+
+  &__value {
+    color: $color-gray-500;
+  }
+
+  &__track {
+    height: 0.5rem;
+    background-color: $color-gray-200;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    @include gradient-accent;
+    border-radius: 9999px;
+    transition: width $transition-slow;
+    opacity: 0;
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+}
