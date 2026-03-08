@@ -1,6 +1,6 @@
 export const CONTENT = {
   hero: {
-    title: "John Doe",
+    title: "Yuliia Martynovych",
     subtitle: "Full Stack Developer",
   },
   about: {
