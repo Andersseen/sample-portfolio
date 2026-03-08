@@ -16,6 +16,8 @@ const NAV_LINKS = [
 const LANG_OPTIONS: LangCode[] = ["UA", "EN", "ES"];
 
 export default function Navbar() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [desktopNavOpen, setDesktopNavOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState<LangCode>("EN");
@@ -27,16 +29,55 @@ export default function Navbar() {
     [],
   );
 
+  const panelOpen = isDesktop ? desktopNavOpen : menuOpen;
+
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 920px)");
+
+    const syncViewportMode = () => {
+      setIsDesktop(mediaQuery.matches);
+    };
+
+    syncViewportMode();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", syncViewportMode);
+      return () => mediaQuery.removeEventListener("change", syncViewportMode);
+    }
+
+    mediaQuery.addListener(syncViewportMode);
+    return () => mediaQuery.removeListener(syncViewportMode);
+  }, []);
+
+  useEffect(() => {
+    if (isDesktop) {
+      setMenuOpen(false);
+    } else {
+      setDesktopNavOpen(false);
+      setLangOpen(false);
+    }
+  }, [isDesktop]);
+
+  useEffect(() => {
+    if (!panelOpen) {
+      setLangOpen(false);
+    }
+  }, [panelOpen]);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      return;
+    }
+
     const onResize = () => {
-      if (window.innerWidth >= 920) {
-        setMenuOpen(false);
+      if (window.innerWidth < 920) {
+        setDesktopNavOpen(false);
       }
     };
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
     let rafId = 0;
@@ -136,42 +177,74 @@ export default function Navbar() {
     if (targetHash) {
       setActiveHash(targetHash);
     }
-    setMenuOpen(false);
+    if (!isDesktop) {
+      setMenuOpen(false);
+    }
     setLangOpen(false);
   };
 
+  const handlePrimaryToggle = () => {
+    if (isDesktop) {
+      setDesktopNavOpen((prev) => !prev);
+      return;
+    }
+
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
-    <header className="site-header">
-      <nav className="site-nav" aria-label="Primary">
-        <a
-          className="site-nav__brand"
-          href="#home"
-          onClick={() => handleNavClick("#home")}
-        >
-          <span className="site-nav__logo" aria-hidden="true">
-            YM
-          </span>
-          <span className="site-nav__brand-text">
-            <span className="site-nav__brand-name">Yuliia Martynovych</span>
-            <span className="site-nav__brand-role">Portfolio</span>
-          </span>
-        </a>
+    <header
+      className={`site-header ${isDesktop ? "site-header--desktop" : "site-header--mobile"} ${panelOpen ? "is-open" : ""}`}
+    >
+      <div className="site-header__dock">
+        {(!isDesktop || !desktopNavOpen) && (
+          <button
+            className={`site-header__trigger ${isDesktop ? "site-header__trigger--avatar" : "site-header__trigger--menu"}`}
+            type="button"
+            aria-expanded={panelOpen}
+            aria-controls="site-nav-panel"
+            onClick={handlePrimaryToggle}
+            aria-label={
+              isDesktop
+                ? panelOpen
+                  ? "Collapse navigation"
+                  : "Expand navigation"
+                : panelOpen
+                  ? "Close menu"
+                  : "Open menu"
+            }
+          >
+            {isDesktop ? (
+              <span className="site-header__avatar" aria-hidden="true">
+                YM
+              </span>
+            ) : panelOpen ? (
+              <X size={18} />
+            ) : (
+              <Menu size={18} />
+            )}
+          </button>
+        )}
 
-        <button
-          className="site-nav__menu-btn"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="site-nav-links"
-          onClick={() => setMenuOpen((prev) => !prev)}
+        <nav
+          id="site-nav-panel"
+          className={`site-nav ${panelOpen ? "is-open" : ""}`}
+          aria-label="Primary"
         >
-          {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          <span className="site-nav__menu-text">Menu</span>
-        </button>
+          <a
+            className="site-nav__brand"
+            href="#home"
+            onClick={() => handleNavClick("#home")}
+          >
+            <span className="site-nav__logo" aria-hidden="true">
+              YM
+            </span>
+            <span className="site-nav__brand-text">
+              <span className="site-nav__brand-name">Yuliia Martynovych</span>
+              <span className="site-nav__brand-role">Portfolio</span>
+            </span>
+          </a>
 
-        <div
-          id="site-nav-links"
-          className={`site-nav__panel ${menuOpen ? "is-open" : ""}`}
-        >
           <ul className="site-nav__links">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
@@ -241,9 +314,19 @@ export default function Navbar() {
             </div>
 
             <ThemeSwitcher />
+            {isDesktop && desktopNavOpen && (
+              <button
+                type="button"
+                className="site-nav__collapse"
+                onClick={() => setDesktopNavOpen(false)}
+                aria-label="Collapse navigation"
+              >
+                <X size={16} />
+              </button>
+            )}
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }
