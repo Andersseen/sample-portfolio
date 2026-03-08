@@ -6,22 +6,27 @@
 // ======================
 
 .about {
-  @include flex-column;
+  width: min(72rem, 100%);
+  min-height: 100svh;
+  margin: 0 auto;
+  display: grid;
+  align-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 1.5rem;
-  background-color: $color-primary;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: clamp(4.4rem, 8vh, 6rem) clamp(1rem, 3vw, 3.2rem);
+  background: var(--color-background);
 
   @include respond-to(md) {
-    flex-direction: row;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   &__animation {
-    width: 100%;
+    width: min(100%, 36rem);
+    margin-inline: auto;
     @include flex-center;
 
     @include respond-to(md) {
-      width: 50%;
+      width: min(100%, 40rem);
     }
   }
 
@@ -37,23 +42,27 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 1.5rem;
+    padding: clamp(0.6rem, 1.4vw, 1.5rem);
+    margin-inline: auto;
+    max-width: 38rem;
 
     @include respond-to(md) {
-      width: 50%;
+      width: 100%;
       text-align: left;
+      align-items: flex-start;
     }
   }
 
   &__title {
     font-size: 2.25rem;
     font-weight: 700;
-    color: $color-mark;
+    color: var(--color-secondary);
     margin-bottom: 1rem;
   }
 
   &__description {
-    font-size: 1.125rem;
-    color: $color-secondary;
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    line-height: 1.65;
+    color: var(--color-muted);
   }
 }

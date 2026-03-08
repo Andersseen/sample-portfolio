@@ -6,22 +6,26 @@
 // ======================
 
 .hero {
-  height: 100vh;
+  min-height: 100svh;
   @include flex-center;
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
 
   &__content {
-    z-index: $z-content;
-    color: $color-secondary;
+    z-index: $z-content + 1;
+    color: var(--color-foreground);
   }
 
   &__title {
     font-size: 3.75rem;
     font-weight: 700;
     margin-bottom: 1rem;
+    text-shadow: 0 10px 24px rgb(var(--bg-rgb) / 0.24);
   }
 
   &__subtitle {
     font-size: 1.25rem;
+    color: var(--color-muted);
   }
 }

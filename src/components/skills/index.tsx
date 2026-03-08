@@ -37,7 +37,7 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="skills" id="tools">
+    <section className="skills" id="skills">
       <AnimatedTitle
         text="TOOLS IM USING."
         className="skills__title"

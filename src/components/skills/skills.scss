@@ -6,14 +6,22 @@
 // ======================
 
 .skills {
-  min-height: 100vh;
+  min-height: 100svh;
   position: relative;
   z-index: $z-content;
   width: 100%;
   @include flex-center;
   flex-direction: column;
+  align-items: stretch;
   overflow: hidden;
-  background-color: $color-primary;
+  padding: clamp(4rem, 8vh, 6rem) 1.25rem;
+  background:
+    radial-gradient(
+      34rem 22rem at 8% 12%,
+      rgb(var(--secondary-rgb) / 0.14),
+      transparent 78%
+    ),
+    var(--color-background);
 
   &__title {
     text-align: center;
@@ -21,8 +29,8 @@
     font-weight: 700;
     line-height: 0.9em;
     letter-spacing: -0.05em;
-    color: $color-secondary;
-    margin-bottom: 2rem;
+    color: var(--color-foreground);
+    margin-bottom: clamp(1.4rem, 3vw, 2.2rem);
 
     @include respond-to(sm) {
       font-size: 45px;
@@ -38,8 +46,11 @@
   }
 
   &__content {
+    width: min(72rem, 100%);
+    margin: 0 auto;
     @include flex-column;
     justify-content: center;
+    gap: 1.5rem;
 
     @include respond-to(lg) {
       flex-direction: row;
@@ -52,7 +63,7 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    padding: 2rem;
+    padding: 0;
   }
 
   &__category {
@@ -65,7 +76,11 @@
     font-weight: 700;
     line-height: 1.625;
     letter-spacing: 0.025em;
-    color: $color-secondary;
+    color: var(--color-foreground);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @include respond-to(md) {
       margin-bottom: 4rem;

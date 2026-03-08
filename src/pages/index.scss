@@ -1,0 +1,33 @@
+.home {
+  width: 100%;
+
+  &__hero {
+    min-height: 100svh;
+  }
+
+  &__block {
+    width: 100%;
+  }
+
+  &__block--about .about,
+  &__block--skills .skills,
+  &__block--projects .projects,
+  &__block--contact .lamp {
+    min-height: 100svh;
+  }
+
+  &__block--about,
+  &__block--skills,
+  &__block--projects,
+  &__block--contact {
+    position: relative;
+  }
+}
+
+#home,
+#about,
+#skills,
+#projects,
+#contact {
+  scroll-margin-top: 6.2rem;
+}

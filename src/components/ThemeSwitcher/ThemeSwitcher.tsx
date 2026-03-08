@@ -3,8 +3,10 @@ import "./ThemeSwitcher.scss";
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") ?? "light";
+    if (typeof document !== "undefined") {
+      return document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
     }
     return "light";
   });
@@ -26,6 +28,7 @@ export default function ThemeSwitcher() {
       onClick={toggleTheme}
       className="theme-switcher"
       aria-label="Toggle theme"
+      aria-pressed={theme === "dark"}
     >
       {theme === "light" ? (
         <svg

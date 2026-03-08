@@ -1,0 +1,118 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.projects {
+  min-height: 100svh;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  padding: clamp(4rem, 8vh, 6rem) 1.25rem;
+  background:
+    radial-gradient(
+      28rem 16rem at 86% 18%,
+      rgb(var(--primary-rgb) / 0.14),
+      transparent 75%
+    ),
+    var(--color-background);
+
+  &__container {
+    width: min(72rem, 100%);
+    margin: 0 auto;
+  }
+
+  &__eyebrow {
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  &__title {
+    margin-top: 0.55rem;
+    color: var(--color-foreground);
+    font-size: clamp(2rem, 5.6vw, 3.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  &__lead {
+    margin-top: 1rem;
+    max-width: 58ch;
+    color: var(--color-muted);
+    line-height: 1.7;
+    font-size: clamp(1rem, 2.3vw, 1.12rem);
+  }
+
+  &__grid {
+    margin-top: clamp(1.5rem, 4vw, 2.4rem);
+    display: grid;
+    gap: 1rem;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  &__card {
+    display: grid;
+    gap: 0.9rem;
+    padding: clamp(1rem, 2.2vw, 1.35rem);
+    border-radius: 1.1rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: 0 12px 34px rgb(var(--fg-rgb) / 0.1);
+  }
+
+  &__card-title {
+    color: var(--color-foreground);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    line-height: 1.25;
+  }
+
+  &__card-description {
+    color: var(--color-muted);
+    line-height: 1.6;
+    font-size: 0.98rem;
+  }
+
+  &__stack {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+
+  &__tag {
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--primary-rgb) / 0.36);
+    color: var(--color-foreground);
+    background: rgb(var(--primary-rgb) / 0.14);
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.28rem 0.56rem;
+  }
+
+  &__link {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: rgb(var(--primary-rgb) / 0.55);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+}

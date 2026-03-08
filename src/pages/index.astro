@@ -3,46 +3,34 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import LavaLamp from '@/components/LavaLamp/LavaLamp';
 import Skills from '@/components/skills';
 import Contact from '@/components/contact';
-import WaveDivider from '@/components/WaveDivider/WaveDivider.astro';
+import Projects from '@/components/Projects/Projects';
 import About from '@/components/About/About';
 import { CONTENT } from '@/data/content';
 import '@/components/Hero/Hero.scss';
+import './index.scss';
 ---
 
-<MainLayout title="Portfolio">
-  <section class="hero">
-    <LavaLamp client:load />
-    <div class="hero__content">
-      <h1 class="hero__title">{CONTENT.hero.title}</h1>
-      <p class="hero__subtitle">{CONTENT.hero.subtitle}</p>
-    </div>
-  </section>
-  <WaveDivider />
+<MainLayout title="Yuliia Martynovych | Portfolio">
+  <main class="home">
+    <section class="hero home__hero" id="home">
+      <LavaLamp client:load />
+      <div class="hero__content">
+        <h1 class="hero__title">{CONTENT.hero.title}</h1>
+        <p class="hero__subtitle">{CONTENT.hero.subtitle}</p>
+      </div>
+    </section>
 
-  <div class="relative">
-    <div class="sticky top-0">
+    <div class="home__block home__block--about" id="about">
       <About client:only="react" />
     </div>
-    <div class="sticky top-0">
+    <div class="home__block home__block--skills" id="skills">
       <Skills client:only="react" />
     </div>
-    <div class="sticky top-0">
+    <div class="home__block home__block--projects" id="projects">
+      <Projects client:load />
+    </div>
+    <div class="home__block home__block--contact" id="contact">
       <Contact client:load />
     </div>
-  </div>
+  </main>
 </MainLayout>
-
-<style lang="scss">
-  .relative {
-    position: relative;
-  }
-
-  .sticky {
-    position: sticky;
-    top: 0;
-  }
-
-  .top-0 {
-    top: 0;
-  }
-</style>

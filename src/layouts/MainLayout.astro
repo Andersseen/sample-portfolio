@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import Navbar from '@/components/Navbar/Navbar';
 import '../styles/global.scss';
 
 interface Props {
@@ -14,9 +15,20 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const shouldUseDark = stored ? stored === "dark" : prefersDark;
+        if (shouldUseDark) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <ClientRouter />
   </head>
   <body>
+    <Navbar client:load />
     <slot />
   </body>
 </html>

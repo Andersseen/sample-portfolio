@@ -1,27 +1,96 @@
 @use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
 
 // ======================
 // Block: wave-divider
 // ======================
 
 .wave-divider {
+  --wave-height: clamp(72px, 12vh, 148px);
+
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  background-color: $color-primary;
+  background: transparent;
 
   &__svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
-    height: 60px;
+    width: calc(100% + 96px);
+    margin-left: -48px;
+    height: var(--wave-height);
+    margin-bottom: -2px;
+  }
 
-    @include respond-to(md) {
-      height: 150px;
+  &__lip {
+    opacity: 0.92;
+  }
+
+  &__layer {
+    transform-box: fill-box;
+    transform-origin: center;
+
+    &--slow {
+      opacity: 0.9;
+      animation: wave-drift-slow 14s ease-in-out infinite;
     }
+
+    &--fast {
+      opacity: 0.48;
+      animation: wave-drift-fast 9s ease-in-out infinite;
+    }
+  }
+
+  &__stop-start {
+    stop-color: var(--lava-edge-start);
+  }
+
+  &__stop-mid {
+    stop-color: color-mix(
+      in srgb,
+      var(--lava-edge-start) 56%,
+      var(--lava-edge-end)
+    );
+  }
+
+  &__stop-end {
+    stop-color: var(--lava-edge-end);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__layer--slow,
+    &__layer--fast {
+      animation: none;
+    }
+  }
+}
+
+@keyframes wave-drift-slow {
+  0% {
+    transform: translateX(-14px) translateY(0);
+  }
+
+  50% {
+    transform: translateX(14px) translateY(1px);
+  }
+
+  100% {
+    transform: translateX(-14px) translateY(0);
+  }
+}
+
+@keyframes wave-drift-fast {
+  0% {
+    transform: translateX(9px) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-11px) translateY(1px);
+  }
+
+  100% {
+    transform: translateX(9px) translateY(0);
   }
 }
