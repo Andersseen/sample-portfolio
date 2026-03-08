@@ -12,7 +12,7 @@
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  background-color: $color-primary;
+  background-color: var(--color-background);
 
   &__svg {
     position: relative;
@@ -23,5 +23,13 @@
     @include respond-to(md) {
       height: 150px;
     }
+  }
+
+  &__stop-start {
+    stop-color: var(--color-secondary);
+  }
+
+  &__stop-end {
+    stop-color: var(--color-primary);
   }
 }

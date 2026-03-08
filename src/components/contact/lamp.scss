@@ -11,17 +11,17 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: $color-background;
+  background-color: var(--color-background);
   width: 100%;
   z-index: $z-base;
-  min-height: 100vh;
+  min-height: 100svh;
 
   &__glow-wrapper {
     position: relative;
     display: flex;
     width: 100%;
     flex: 1;
-    transform: scaleY(1.25);
+    transform: scaleY(1.1);
     align-items: center;
     justify-content: center;
     isolation: isolate;
@@ -38,7 +38,7 @@
       right: 50%;
       background: conic-gradient(
         from 70deg at center top,
-        $color-mark,
+        rgb(var(--secondary-rgb) / 0.36),
         transparent,
         transparent
       );
@@ -50,7 +50,7 @@
         from 290deg at center top,
         transparent,
         transparent,
-        $color-mark
+        rgb(var(--secondary-rgb) / 0.36)
       );
     }
   }
@@ -59,7 +59,7 @@
     position: absolute;
     z-index: $z-overlay;
     bottom: 0;
-    background-color: $color-background;
+    background-color: var(--color-background);
 
     &--bottom-left {
       width: 100%;
@@ -96,8 +96,8 @@
     height: 12rem;
     width: 100%;
     transform: translateY(3rem) scaleX(1.5);
-    background-color: $color-background;
-    filter: blur(24px);
+    background-color: var(--color-background);
+    filter: blur(30px);
   }
 
   &__backdrop {
@@ -107,42 +107,8 @@
     height: 12rem;
     width: 100%;
     background: transparent;
-    opacity: 0.1;
+    opacity: 0.05;
     backdrop-filter: blur(12px);
-  }
-
-  &__glow-ball {
-    position: absolute;
-    inset: auto;
-    z-index: $z-lamp-top;
-    height: 9rem;
-    width: 28rem;
-    transform: translateY(-50%);
-    border-radius: 9999px;
-    background-color: $color-mark;
-    opacity: 0.5;
-    filter: blur(48px);
-  }
-
-  &__glow-line-bg {
-    position: absolute;
-    inset: auto;
-    z-index: $z-lamp-blur;
-    height: 9rem;
-    width: 16rem;
-    transform: translateY(-6rem);
-    border-radius: 9999px;
-    background-color: $color-secondary;
-    filter: blur(24px);
-  }
-
-  &__glow-line {
-    position: absolute;
-    inset: auto;
-    z-index: $z-lamp-top;
-    height: 0.125rem;
-    transform: translateY(-7rem);
-    background-color: $color-secondary;
   }
 
   &__top-fill {
@@ -152,16 +118,21 @@
     height: 11rem;
     width: 100%;
     transform: translateY(-12.5rem);
-    background-color: $color-background;
+    background-color: var(--color-background);
   }
 
   &__children {
     position: relative;
     z-index: $z-lamp-top;
     display: flex;
-    transform: translateY(-20rem);
+    width: 100%;
+    transform: translateY(-9rem);
     @include flex-column;
     align-items: center;
     padding: 0 1.25rem;
+
+    @include respond-to(md) {
+      transform: translateY(-10rem);
+    }
   }
 }

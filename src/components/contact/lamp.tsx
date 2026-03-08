@@ -14,8 +14,8 @@ export const LampContainer = ({ children }: { children: React.ReactNode }) => {
     <div className="lamp">
       <div className="lamp__glow-wrapper">
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.35, width: "12rem" }}
+          whileInView={{ opacity: 0.65, width: "22rem" }}
           transition={LAMP_TRANSITION}
           className="lamp__conic lamp__conic--left"
         >
@@ -23,8 +23,8 @@ export const LampContainer = ({ children }: { children: React.ReactNode }) => {
           <div className="lamp__mask lamp__mask--left-edge" />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0.5, width: "15rem" }}
-          whileInView={{ opacity: 1, width: "30rem" }}
+          initial={{ opacity: 0.35, width: "12rem" }}
+          whileInView={{ opacity: 0.65, width: "22rem" }}
           transition={LAMP_TRANSITION}
           className="lamp__conic lamp__conic--right"
         >
@@ -33,19 +33,6 @@ export const LampContainer = ({ children }: { children: React.ReactNode }) => {
         </motion.div>
         <div className="lamp__blur-bg" />
         <div className="lamp__backdrop" />
-        <div className="lamp__glow-ball" />
-        <motion.div
-          initial={{ width: "8rem" }}
-          whileInView={{ width: "16rem" }}
-          transition={LAMP_TRANSITION}
-          className="lamp__glow-line-bg"
-        />
-        <motion.div
-          initial={{ width: "15rem" }}
-          whileInView={{ width: "30rem" }}
-          transition={LAMP_TRANSITION}
-          className="lamp__glow-line"
-        />
         <div className="lamp__top-fill" />
       </div>
       <div className="lamp__children">{children}</div>

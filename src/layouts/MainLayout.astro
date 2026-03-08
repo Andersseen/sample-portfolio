@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from 'astro:transitions';
+import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 import '../styles/global.scss';
 
 interface Props {
@@ -14,9 +15,31 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const shouldUseDark = stored ? stored === "dark" : prefersDark;
+        if (shouldUseDark) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <ClientRouter />
   </head>
   <body>
+    <div class="theme-switcher-slot">
+      <ThemeSwitcher client:load />
+    </div>
     <slot />
   </body>
 </html>
+
+<style>
+  .theme-switcher-slot {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+  }
+</style>

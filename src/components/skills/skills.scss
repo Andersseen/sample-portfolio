@@ -13,7 +13,13 @@
   @include flex-center;
   flex-direction: column;
   overflow: hidden;
-  background-color: $color-primary;
+  background:
+    radial-gradient(
+      34rem 22rem at 8% 12%,
+      rgb(var(--secondary-rgb) / 0.14),
+      transparent 78%
+    ),
+    var(--color-background);
 
   &__title {
     text-align: center;
@@ -21,7 +27,7 @@
     font-weight: 700;
     line-height: 0.9em;
     letter-spacing: -0.05em;
-    color: $color-secondary;
+    color: var(--color-foreground);
     margin-bottom: 2rem;
 
     @include respond-to(sm) {
@@ -65,7 +71,7 @@
     font-weight: 700;
     line-height: 1.625;
     letter-spacing: 0.025em;
-    color: $color-secondary;
+    color: var(--color-foreground);
 
     @include respond-to(md) {
       margin-bottom: 4rem;

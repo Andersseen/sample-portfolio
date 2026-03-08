@@ -5,6 +5,62 @@
 @use "variables" as *;
 @use "animations";
 
+:root {
+  color-scheme: light;
+
+  --color-primary: #6b5dd3;
+  --color-secondary: #ff9b78;
+  --color-background: #f7f5ff;
+  --color-foreground: #251f47;
+
+  --color-surface: rgba(255, 255, 255, 0.78);
+  --color-surface-strong: rgba(255, 255, 255, 0.92);
+  --color-border: rgba(37, 31, 71, 0.14);
+  --color-muted: rgba(37, 31, 71, 0.72);
+  --color-glow-soft: rgba(107, 93, 211, 0.16);
+  --color-glow-accent: rgba(255, 155, 120, 0.18);
+
+  --lava-bg-start: #5a48c5;
+  --lava-bg-end: #846fe3;
+  --lava-blob-start: #ff9f7a;
+  --lava-blob-end: #ffe2c9;
+  --lava-edge-start: #ffab88;
+  --lava-edge-end: #fff1de;
+
+  --fg-rgb: 37 31 71;
+  --bg-rgb: 247 245 255;
+  --primary-rgb: 107 93 211;
+  --secondary-rgb: 255 155 120;
+}
+
+html.dark {
+  color-scheme: dark;
+
+  --color-primary: #a89bff;
+  --color-secondary: #ffb089;
+  --color-background: #0f0c24;
+  --color-foreground: #f5f2ff;
+
+  --color-surface: rgba(28, 23, 58, 0.66);
+  --color-surface-strong: rgba(38, 31, 74, 0.9);
+  --color-border: rgba(245, 242, 255, 0.18);
+  --color-muted: rgba(245, 242, 255, 0.76);
+  --color-glow-soft: rgba(168, 155, 255, 0.2);
+  --color-glow-accent: rgba(255, 176, 137, 0.16);
+
+  --lava-bg-start: #241a57;
+  --lava-bg-end: #49379a;
+  --lava-blob-start: #ff9f71;
+  --lava-blob-end: #ffd9bc;
+  --lava-edge-start: #ffab83;
+  --lava-edge-end: #e7dcff;
+
+  --fg-rgb: 245 242 255;
+  --bg-rgb: 15 12 36;
+  --primary-rgb: 168 155 255;
+  --secondary-rgb: 255 176 137;
+}
+
 *,
 *::before,
 *::after {
@@ -15,7 +71,8 @@
 
 html {
   font-family: $font-family-sans;
-  background: $color-primary;
+  background: var(--color-background);
+  color: var(--color-foreground);
   scroll-behavior: smooth;
 }
 
@@ -25,6 +82,11 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 code {
