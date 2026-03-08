@@ -1,0 +1,50 @@
+// ======================
+// Design Tokens
+// ======================
+
+// Colors
+$color-primary: #282a2e;
+$color-secondary: #f9f5e0;
+$color-mark: #f5895c;
+$color-background: #7450e9;
+$color-accent-purple: #835eff;
+$color-accent-pink: #ff008d;
+$color-accent-orange: #ff5733;
+
+// Neutrals
+$color-white: #fff;
+$color-black: #000;
+$color-gray-50: #f9fafb;
+$color-gray-200: #e5e7eb;
+$color-gray-300: #d1d5db;
+$color-gray-400: #9ca3af;
+$color-gray-500: #6b7280;
+$color-gray-600: #4b5563;
+$color-gray-700: #374151;
+$color-gray-800: #1f2937;
+$color-gray-900: #111827;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Font
+$font-family-sans: system-ui, sans-serif;
+$font-family-mono:
+  Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono",
+  "Bitstream Vera Sans Mono", "Courier New", monospace;
+
+// Transitions
+$transition-fast: 0.3s ease;
+$transition-medium: 0.5s ease;
+$transition-slow: 1s ease-out;
+
+// Z-index scale
+$z-base: 0;
+$z-content: 10;
+$z-overlay: 20;
+$z-lamp-blur: 30;
+$z-lamp-line: 40;
+$z-lamp-top: 50;

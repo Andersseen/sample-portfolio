@@ -1,0 +1,21 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ======================
+// Block: theme-switcher
+// ======================
+
+.theme-switcher {
+  @include glass-morphism;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  color: $color-white;
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $color-white;
+    display: block;
+  }
+}

@@ -1,0 +1,27 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ======================
+// Block: hero
+// ======================
+
+.hero {
+  height: 100vh;
+  @include flex-center;
+  position: relative;
+
+  &__content {
+    z-index: $z-content;
+    color: $color-secondary;
+  }
+
+  &__title {
+    font-size: 3.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+  }
+}

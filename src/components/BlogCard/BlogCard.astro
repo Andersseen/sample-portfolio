@@ -1,0 +1,32 @@
+---
+import './BlogCard.scss';
+
+interface Props {
+  title: string;
+  date: string;
+  excerpt: string;
+  image: string;
+}
+
+const { title, date, excerpt, image } = Astro.props;
+---
+
+<article class="blog-card">
+  <div class="blog-card__image-wrapper">
+    <img src={image} alt={title} class="blog-card__image" />
+    <div class="blog-card__image-overlay"></div>
+  </div>
+  <div class="blog-card__body">
+    <time class="blog-card__date">{date}</time>
+    <h3 class="blog-card__title">{title}</h3>
+    <p class="blog-card__excerpt">{excerpt}</p>
+    <div>
+      <span class="blog-card__link">
+        Read more
+        <svg class="blog-card__link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</article>

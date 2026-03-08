@@ -1,12 +1,11 @@
 ---
+import './LanguagePicker.scss';
+
 const currentPath = Astro.url.pathname;
 const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
 const translatedPath = currentLang === 'en' ? `/es${currentPath}` : currentPath.replace('/es', '');
 ---
 
-<a
-  href={translatedPath}
-  class="bg-white/10 backdrop-blur-sm px-3 py-2 rounded-full hover:bg-white/20 transition-colors text-white font-medium"
->
+<a href={translatedPath} class="language-picker">
   {currentLang === 'en' ? 'ES' : 'EN'}
 </a>

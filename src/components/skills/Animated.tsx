@@ -15,36 +15,24 @@ type AnimatedProps = {
   children: React.ReactNode;
 };
 
+const HOVER_COLOR = "#ff5733";
+
 const animatedVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: "1em",
-  },
-  visible: {
-    opacity: 1,
-    y: "0em",
-  },
+  hidden: { opacity: 0, y: "1em" },
+  visible: { opacity: 1, y: "0em" },
 };
 
 const Animated: React.FC<AnimatedProps> = ({
   className,
   delay,
-  stepSize = 0.1,
   iconSize = 50,
   children,
 }) => {
   const controls = useAnimation();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    controls.start(inView ? "visible" : "hidden");
   }, [controls, inView]);
 
   const transition: Transition = {
@@ -63,19 +51,13 @@ const Animated: React.FC<AnimatedProps> = ({
       transition={transition}
     >
       {React.Children.map(children, (child, index) => {
-        // Cast the child to an IconType to access the IconType properties
-        const icon = child as React.ReactElement<any>;
+        const icon = child as React.ReactElement;
         return (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.1, color: "#ff5733" }} // Modify the color when hovering
+            whileHover={{ scale: 1.1, color: HOVER_COLOR }}
             whileTap={{ scale: 0.9 }}
             style={{ width: iconSize, height: iconSize }}
-            data-blobity
-            data-blobity-radius={15}
-            data-blobity-offset-x={15}
-            data-blobity-offset-y={15}
-            data-blobity-magnetic={false}
           >
             {icon}
           </motion.div>

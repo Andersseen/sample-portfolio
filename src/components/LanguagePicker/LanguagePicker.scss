@@ -1,0 +1,15 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+// ======================
+// Block: language-picker
+// ======================
+
+.language-picker {
+  @include glass-morphism;
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  color: $color-white;
+  font-weight: 500;
+  text-decoration: none;
+}

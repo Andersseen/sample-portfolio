@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
-import "./animate.css";
-import AnimatedBody from "./AnimatedBody.tsx";
-import AnimatedTitle from "./AnimatedTitle.tsx";
+import { useEffect, useRef } from "react";
+import "./skills.scss";
+import AnimatedBody from "./AnimatedBody";
+import AnimatedTitle from "./AnimatedTitle";
+import AnimatedTools from "./AnimatedTools";
 import lottie from "lottie-web";
 import {
   SiGit,
@@ -15,88 +16,79 @@ import {
   SiMongodb,
   SiNodedotjs,
 } from "react-icons/si";
-import AnimatedTools from "./AnimatedTools.tsx";
+
+const ICON_SIZE = 50;
 
 const Skills = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    lottie.loadAnimation({
-      container: document.getElementById(
-        "lottie-skills-container"
-      ) as HTMLElement,
+    if (!containerRef.current) return;
+
+    const animation = lottie.loadAnimation({
+      container: containerRef.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
       path: "/skills-animation.json",
     });
-  }, []);
-  return (
-    <section
-      className="min-h-section relative z-10 w-full items-center justify-center overflow-hidden bg-primary"
-      id="tools"
-    >
-      <AnimatedTitle
-        text={"TOOLS IM USING."}
-        className={
-          "text-center text-[40px] font-bold leading-[0.9em] tracking-tighter text-secondary sm:text-[45px] mb-8 md:text-[60px] lg:text-[80px]"
-        }
-        wordSpace={"mr-[14px]"}
-        charSpace={"mr-[0.001em]"}
-      />
-      <div className="flex flex-col lg:flex-row justify-center">
-        <div className="flex w-full flex-col items-center justify-center self-center p-8">
-          <div className="mb-10 flex w-full flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-secondary md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16">
-            <AnimatedBody delay={0.2} text="Frontend" />
 
+    return () => animation.destroy();
+  }, []);
+
+  return (
+    <section className="skills" id="tools">
+      <AnimatedTitle
+        text="TOOLS IM USING."
+        className="skills__title"
+        wordSpace="animated-word"
+        charSpace="animated-char"
+      />
+      <div className="skills__content">
+        <div className="skills__categories">
+          <div className="skills__category">
+            <AnimatedBody delay={0.2} text="Frontend" />
             <AnimatedTools
-              className="grid grid-cols-4 gap-4 justify-items-center"
+              className="skills__tools-grid skills__tools-grid--4col"
               delay={0.2}
               stepSize={0.1}
-              iconSize={50}
+              iconSize={ICON_SIZE}
             >
-              <SiTypescript size={50} />
-              <SiJavascript size={50} />
-              <SiReact size={50} />
-
-              <SiNextdotjs size={50} />
+              <SiTypescript size={ICON_SIZE} />
+              <SiJavascript size={ICON_SIZE} />
+              <SiReact size={ICON_SIZE} />
+              <SiNextdotjs size={ICON_SIZE} />
             </AnimatedTools>
           </div>
-          <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-secondary md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16">
+          <div className="skills__category">
             <AnimatedBody delay={0.3} text="Backend" />
-            <div>
-              <AnimatedTools
-                className="grid grid-cols-4 gap-4 justify-items-center"
-                delay={0.3}
-                stepSize={0.1}
-                iconSize={50}
-              >
-                <SiPostgresql size={50} />
-                <SiMysql size={50} />
-                <SiMongodb size={50} />
-                <SiNodedotjs size={50} />
-              </AnimatedTools>
-            </div>
+            <AnimatedTools
+              className="skills__tools-grid skills__tools-grid--4col"
+              delay={0.3}
+              stepSize={0.1}
+              iconSize={ICON_SIZE}
+            >
+              <SiPostgresql size={ICON_SIZE} />
+              <SiMysql size={ICON_SIZE} />
+              <SiMongodb size={ICON_SIZE} />
+              <SiNodedotjs size={ICON_SIZE} />
+            </AnimatedTools>
           </div>
-          <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-secondary md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16">
+          <div className="skills__category">
             <AnimatedBody delay={0.4} text="Other" />
-            <div>
-              <AnimatedTools
-                className="grid grid-cols-2 gap-4 justify-items-center"
-                delay={0.4}
-                stepSize={0.1}
-                iconSize={50}
-              >
-                <SiGithub size={50} />
-                <SiGit size={50} />
-              </AnimatedTools>
-            </div>
+            <AnimatedTools
+              className="skills__tools-grid skills__tools-grid--2col"
+              delay={0.4}
+              stepSize={0.1}
+              iconSize={ICON_SIZE}
+            >
+              <SiGithub size={ICON_SIZE} />
+              <SiGit size={ICON_SIZE} />
+            </AnimatedTools>
           </div>
         </div>
-        {/* Contenedor de la animación */}
-        <div className="w-full flex justify-center items-center">
-          <div
-            id="lottie-skills-container"
-            className="w-full h-full max-w-lg"
-          ></div>
+        <div className="skills__animation">
+          <div ref={containerRef} className="skills__lottie" />
         </div>
       </div>
     </section>

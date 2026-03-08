@@ -1,0 +1,57 @@
+---
+import './ProgressBar.scss';
+
+interface Props {
+  skill: string;
+  percentage: number;
+}
+
+const { skill, percentage } = Astro.props;
+---
+
+<div class="progress-bar">
+  <div class="progress-bar__header">
+    <span class="progress-bar__label">{skill}</span>
+    <span class="progress-bar__value">{percentage}%</span>
+  </div>
+  <div class="progress-bar__track">
+    <div
+      class="progress-bar__fill"
+      style={`width: ${percentage}%`}
+      data-percentage={percentage}
+    ></div>
+  </div>
+</div>
+
+<script>
+  function animateProgressBars() {
+    const bars = document.querySelectorAll<HTMLElement>('[data-percentage]');
+    bars.forEach(bar => {
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        const percentage = bar.dataset.percentage;
+        bar.style.width = `${percentage}%`;
+        bar.classList.add('progress-bar__fill--visible');
+      });
+    });
+  }
+
+  function observeSkillsSection() {
+    const skillsSection = document.querySelector('.skills');
+    if (!skillsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateProgressBars();
+          observer.disconnect();
+        }
+      });
+    });
+
+    observer.observe(skillsSection);
+  }
+
+  document.addEventListener('DOMContentLoaded', observeSkillsSection);
+  document.addEventListener('astro:page-load', observeSkillsSection);
+</script>

@@ -1,0 +1,37 @@
+// ======================
+// Global Reset & Base Styles
+// ======================
+
+@use "variables" as *;
+@use "animations";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-family-sans;
+  background: $color-primary;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-sans;
+  text-align: center;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: $font-family-mono;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
