@@ -8,6 +8,9 @@
 .contact {
   position: relative;
   width: 100%;
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
   isolation: isolate;
 
   &__radial-bg {
@@ -32,15 +35,14 @@
   &__container {
     position: relative;
     z-index: $z-content;
-    width: min(70rem, 100%);
+    width: min(72rem, 100%);
     margin: 0 auto;
-    min-height: 70vh;
+    min-height: auto;
     display: grid;
     align-content: center;
-    padding: clamp(6.2rem, 10vw, 8.5rem) 1.25rem clamp(3.4rem, 8vw, 5rem);
+    padding: clamp(2rem, 4vw, 3rem) 1.25rem;
 
     @include respond-to(md) {
-      min-height: 72vh;
       padding-inline: 2rem;
     }
   }

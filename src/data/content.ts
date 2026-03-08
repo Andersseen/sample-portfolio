@@ -9,15 +9,37 @@ export const CONTENT = {
       "I'm a passionate developer with expertise in modern web technologies. With over 5 years of experience, I specialize in creating beautiful and functional web applications.",
   },
   projects: {
-    title: "My Projects",
+    title: "Featured Projects",
+    description:
+      "A selection of products focused on performance, strong UX and maintainable architecture.",
     items: [
       {
-        title: "Project 1",
-        description: "A description of your amazing project.",
+        title: "Commerce Analytics Dashboard",
+        description:
+          "Real-time sales and retention dashboard with custom widgets, role-based access and offline-ready charts.",
+        stack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+        href: "https://github.com",
       },
       {
-        title: "Project 2",
-        description: "A description of your amazing project.",
+        title: "Hospital Appointment Platform",
+        description:
+          "Scheduling platform with smart availability, secure patient records and async notifications.",
+        stack: ["Next.js", "Prisma", "Tailwind", "Redis"],
+        href: "https://github.com",
+      },
+      {
+        title: "Travel Planning App",
+        description:
+          "Collaborative itinerary builder with maps, live weather and optimized route planning for teams.",
+        stack: ["React Native", "Firebase", "GraphQL"],
+        href: "https://github.com",
+      },
+      {
+        title: "Portfolio CMS",
+        description:
+          "Lightweight content management layer for personal sites with markdown workflows and media pipelines.",
+        stack: ["Astro", "TypeScript", "Supabase"],
+        href: "https://github.com",
       },
     ],
   },
