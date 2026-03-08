@@ -39,38 +39,72 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const onHashChange = () => {
-      setActiveHash(window.location.hash || "#home");
+    let rafId = 0;
+
+    const getCurrentHashFromScroll = () => {
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean) as HTMLElement[];
+
+      if (!sections.length) return "#home";
+
+      const probe = window.scrollY + 140;
+      let current = `#${sections[0].id}`;
+
+      for (const section of sections) {
+        if (probe >= section.offsetTop) {
+          current = `#${section.id}`;
+        } else {
+          break;
+        }
+      }
+
+      const nearBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 2;
+
+      if (nearBottom) {
+        current = `#${sections[sections.length - 1].id}`;
+      }
+
+      return current;
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const syncActiveFromScroll = () => {
+      const next = getCurrentHashFromScroll();
+      setActiveHash((prev) => (prev === next ? prev : next));
+    };
 
-        if (visible?.target?.id) {
-          setActiveHash(`#${visible.target.id}`);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-35% 0px -50% 0px",
-        threshold: [0.25, 0.5, 0.75],
-      },
+    const onScrollOrResize = () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(syncActiveFromScroll);
+    };
+
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      if (hash && NAV_LINKS.some((link) => link.href === hash)) {
+        setActiveHash(hash);
+      } else {
+        syncActiveFromScroll();
+      }
+    };
+
+    // Some sections are client-only and appear a bit later; re-sync after hydration.
+    const hydrationRetries = [80, 280, 700, 1300].map((delay) =>
+      window.setTimeout(syncActiveFromScroll, delay),
     );
 
-    sectionIds.forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    });
-
-    onHashChange();
+    syncActiveFromScroll();
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
     window.addEventListener("hashchange", onHashChange);
 
     return () => {
+      hydrationRetries.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
       window.removeEventListener("hashchange", onHashChange);
-      observer.disconnect();
+      if (rafId) window.cancelAnimationFrame(rafId);
     };
   }, [sectionIds]);
 
@@ -98,7 +132,10 @@ export default function Navbar() {
     };
   }, []);
 
-  const handleNavClick = () => {
+  const handleNavClick = (targetHash?: string) => {
+    if (targetHash) {
+      setActiveHash(targetHash);
+    }
     setMenuOpen(false);
     setLangOpen(false);
   };
@@ -106,7 +143,11 @@ export default function Navbar() {
   return (
     <header className="site-header">
       <nav className="site-nav" aria-label="Primary">
-        <a className="site-nav__brand" href="#home" onClick={handleNavClick}>
+        <a
+          className="site-nav__brand"
+          href="#home"
+          onClick={() => handleNavClick("#home")}
+        >
           <span className="site-nav__logo" aria-hidden="true">
             YM
           </span>
@@ -136,7 +177,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  onClick={handleNavClick}
+                  onClick={() => handleNavClick(link.href)}
                   className={
                     activeHash === link.href
                       ? "site-nav__link is-active"
