@@ -17,7 +17,7 @@ import {
   SiNodedotjs,
 } from "react-icons/si";
 
-const ICON_SIZE = 50;
+const ICON_SIZE = 40;
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,7 +39,7 @@ const Skills = () => {
   return (
     <section className="skills" id="skills">
       <AnimatedTitle
-        text="TOOLS IM USING."
+        text="TOOLS IM USING"
         className="skills__title"
         wordSpace="animated-word"
         charSpace="animated-char"
