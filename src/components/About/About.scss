@@ -7,13 +7,13 @@
 
 .about {
   width: min(72rem, 100%);
-  min-height: 100svh;
+  min-height: 100dvh;
   margin: 0 auto;
   display: grid;
   align-content: center;
   align-items: center;
-  gap: clamp(1rem, 2vw, 2rem);
-  padding: clamp(4.4rem, 8vh, 6rem) clamp(1rem, 3vw, 3.2rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 5vh, 3.5rem) clamp(1rem, 3vw, 3.2rem);
   background: var(--color-background);
 
   @include respond-to(md) {
@@ -24,9 +24,24 @@
     width: min(100%, 36rem);
     margin-inline: auto;
     @include flex-center;
+    position: relative;
 
     @include respond-to(md) {
       width: min(100%, 40rem);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(
+        circle,
+        rgba(var(--color-primary-rgb), 0.1) 0%,
+        transparent 70%
+      );
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: pulse-glow 4s ease-in-out infinite;
     }
   }
 
@@ -34,17 +49,20 @@
     width: 100%;
     height: 100%;
     max-width: 32rem;
+    position: relative;
+    z-index: 1;
   }
 
-  &__text {
+  &__content {
     width: 100%;
     @include flex-column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: clamp(0.6rem, 1.4vw, 1.5rem);
+    padding: clamp(0.25rem, 0.8vw, 0.75rem);
     margin-inline: auto;
     max-width: 38rem;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
 
     @include respond-to(md) {
       width: 100%;
@@ -54,15 +72,122 @@
   }
 
   &__title {
-    font-size: 2.25rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 700;
     color: var(--color-secondary);
-    margin-bottom: 1rem;
+    background: linear-gradient(
+      135deg,
+      var(--color-secondary),
+      var(--color-primary)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
   }
 
   &__description {
-    font-size: clamp(1rem, 1.5vw, 1.125rem);
-    line-height: 1.65;
+    font-size: clamp(0.9rem, 1.2vw, 0.95rem);
+    line-height: 1.6;
     color: var(--color-muted);
+    margin: 0;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    width: 100%;
+    padding: clamp(1rem, 1.5vw, 1.25rem) 0;
+    margin: clamp(0.25rem, 1vw, 0.75rem) 0;
+    border-top: 1px solid rgba(var(--color-secondary-rgb), 0.1);
+    border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.1);
+  }
+
+  &__stat-item {
+    @include flex-column;
+    align-items: center;
+    gap: 0.5rem;
+
+    @include respond-to(md) {
+      align-items: flex-start;
+    }
+  }
+
+  &__stat-value {
+    font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  &__stat-label {
+    font-size: clamp(0.75rem, 0.95vw, 0.85rem);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.5rem, 0.75vw, 0.75rem) clamp(1.25rem, 1.8vw, 2rem);
+    font-size: clamp(0.9rem, 1rem, 1rem);
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(var(--color-primary-rgb), 0.3);
+
+      &::before {
+        left: 100%;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @include respond-to(md) {
+      align-self: flex-start;
+    }
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.15;
   }
 }

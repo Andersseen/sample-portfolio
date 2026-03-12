@@ -2,7 +2,7 @@
   width: 100%;
 
   &__hero {
-    min-height: 100svh;
+    min-height: 100dvh;
   }
 
   &__block {
@@ -13,7 +13,7 @@
   &__block--skills .skills,
   &__block--projects .projects,
   &__block--contact .lamp {
-    min-height: 100svh;
+    min-height: 100dvh;
   }
 
   &__block--about,
