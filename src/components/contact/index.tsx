@@ -2,12 +2,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   CalendarCheck2,
+  Download,
   Github,
   Linkedin,
   Mail,
   type LucideIcon,
 } from "lucide-react";
 import { useRef } from "react";
+import { useLang } from "@/lib/useLang";
+import { LINKS, mailto } from "@/data/content/links";
 import "./contact.scss";
 
 const FADE_UP = {
@@ -16,36 +19,12 @@ const FADE_UP = {
   viewport: { once: true, amount: 0.35 },
 };
 
-type ContactAction = {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  href: string;
-  external?: boolean;
+const ACTION_ICONS: Record<string, LucideIcon> = {
+  email: Mail,
+  github: Github,
+  linkedin: Linkedin,
+  call: CalendarCheck2,
 };
-
-const CONTACT_ACTIONS: ContactAction[] = [
-  {
-    icon: Mail,
-    title: "Send an email",
-    description: "Best for proposals, scope details and long-form context.",
-    href: "mailto:hello@johndoe.dev",
-  },
-  {
-    icon: CalendarCheck2,
-    title: "Book a strategy call",
-    description: "30-minute discovery session to shape your roadmap.",
-    href: "https://cal.com",
-    external: true,
-  },
-  {
-    icon: Linkedin,
-    title: "Connect on LinkedIn",
-    description: "Ideal for networking, hiring and collaboration chats.",
-    href: "https://www.linkedin.com",
-    external: true,
-  },
-];
 
 const floatTransition = (duration: number) => ({
   duration,
@@ -61,13 +40,19 @@ const fadeTransition = (delay: number) => ({
 });
 
 export const Contact = () => {
-  const dragBoundsRef = useRef<HTMLDivElement>(null);
+  const dragBoundsRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const { content } = useLang();
+  const contact = content.contact;
 
   return (
-    <section className="contact" id="contact" aria-labelledby="contact-title">
+    <section
+      className="contact"
+      aria-labelledby="contact-title"
+      ref={dragBoundsRef}
+    >
       <div className="contact__radial-bg" aria-hidden="true" />
-      <div className="contact__container" ref={dragBoundsRef}>
+      <div className="contact__container">
         <div className="contact__layout">
           <div className="contact__intro">
             <motion.p
@@ -75,24 +60,22 @@ export const Contact = () => {
               {...FADE_UP}
               transition={fadeTransition(0.08)}
             >
-              Available for selected projects
+              {contact.eyebrow}
             </motion.p>
-            <motion.h1
+            <motion.h2
               className="contact__title"
               id="contact-title"
               {...FADE_UP}
               transition={fadeTransition(0.16)}
             >
-              Let&apos;s craft a product people remember.
-            </motion.h1>
+              {contact.title}
+            </motion.h2>
             <motion.p
               className="contact__lead"
               {...FADE_UP}
               transition={fadeTransition(0.24)}
             >
-              I help teams design and build performant interfaces with solid UX.
-              From strategy to shipping, we can move fast without sacrificing
-              quality.
+              {contact.lead}
             </motion.p>
 
             <motion.div
@@ -102,18 +85,18 @@ export const Contact = () => {
             >
               <a
                 className="contact__cta contact__cta--primary"
-                href="mailto:hello@johndoe.dev"
+                href={mailto("Hello Yuliia")}
               >
-                Start a project
+                {contact.ctaPrimary}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
               <a
                 className="contact__cta contact__cta--ghost"
-                href="https://cal.com"
-                target="_blank"
-                rel="noreferrer"
+                href={LINKS.cv}
+                download
               >
-                Schedule a call
+                <Download size={17} aria-hidden="true" />
+                {contact.ctaSecondary}
               </a>
             </motion.div>
 
@@ -124,23 +107,23 @@ export const Contact = () => {
             >
               <a
                 className="contact__social-link"
-                href="https://github.com"
+                href={LINKS.github}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Open GitHub profile"
+                aria-label="GitHub"
               >
                 <Github size={18} aria-hidden="true" />
-                GitHub
+                {contact.socials.github}
               </a>
               <a
                 className="contact__social-link"
-                href="https://www.linkedin.com"
+                href={LINKS.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Open LinkedIn profile"
+                aria-label="LinkedIn"
               >
                 <Linkedin size={18} aria-hidden="true" />
-                LinkedIn
+                {contact.socials.linkedin}
               </a>
             </motion.div>
           </div>
@@ -149,23 +132,22 @@ export const Contact = () => {
             className="contact__panel"
             {...FADE_UP}
             transition={fadeTransition(0.22)}
-            aria-label="Contact options"
+            aria-label={contact.panelTitle}
           >
-            <p className="contact__panel-kicker">Preferred channels</p>
-            <h2 className="contact__panel-title">
-              Choose the best way to reach me
-            </h2>
+            <p className="contact__panel-kicker">{contact.panelKicker}</p>
+            <h3 className="contact__panel-title">{contact.panelTitle}</h3>
             <div className="contact__actions">
-              {CONTACT_ACTIONS.map((action) => {
-                const Icon = action.icon;
+              {contact.actions.map((action) => {
+                const Icon = ACTION_ICONS[action.key] ?? Mail;
+                const external = action.key !== "email";
 
                 return (
                   <a
-                    key={action.title}
+                    key={action.key}
                     className="contact__action"
                     href={action.href}
-                    target={action.external ? "_blank" : undefined}
-                    rel={action.external ? "noreferrer" : undefined}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noreferrer" : undefined}
                   >
                     <span className="contact__action-icon" aria-hidden="true">
                       <Icon size={18} />
@@ -188,66 +170,52 @@ export const Contact = () => {
               })}
             </div>
           </motion.aside>
-
-          <motion.div
-            className="contact__draggable contact__draggable--cursor"
-            drag
-            dragConstraints={dragBoundsRef}
-            dragElastic={0.16}
-            dragMomentum
-            dragTransition={{ bounceStiffness: 220, bounceDamping: 18 }}
-            whileDrag={{ scale: 1.08, rotate: -8 }}
-            animate={
-              shouldReduceMotion
-                ? undefined
-                : {
-                    y: [0, -16],
-                    rotate: [0, -2],
-                  }
-            }
-            transition={shouldReduceMotion ? undefined : floatTransition(4.4)}
-          >
-            <img
-              src="/cursor.png"
-              alt="Decorative cursor"
-              height={200}
-              width={200}
-              className="contact__draggable-img"
-              draggable="false"
-            />
-            <span className="contact__draggable-label">Drag me</span>
-          </motion.div>
-
-          <motion.div
-            className="contact__draggable contact__draggable--message"
-            drag
-            dragConstraints={dragBoundsRef}
-            dragElastic={0.2}
-            dragMomentum
-            dragTransition={{ bounceStiffness: 220, bounceDamping: 18 }}
-            whileDrag={{ scale: 1.08, rotate: 8 }}
-            animate={
-              shouldReduceMotion
-                ? undefined
-                : {
-                    y: [0, -12],
-                    rotate: [0, 2],
-                  }
-            }
-            transition={shouldReduceMotion ? undefined : floatTransition(5.2)}
-          >
-            <img
-              src="/message.png"
-              alt="Decorative chat bubble"
-              height={200}
-              width={200}
-              className="contact__draggable-img"
-              draggable="false"
-            />
-            <span className="contact__draggable-label">Drop anywhere</span>
-          </motion.div>
         </div>
       </div>
+
+      <motion.div
+        className="contact__draggable contact__draggable--cursor"
+        drag
+        dragConstraints={dragBoundsRef}
+        dragElastic={0.16}
+        dragMomentum
+        dragTransition={{ bounceStiffness: 220, bounceDamping: 18 }}
+        whileDrag={{ scale: 1.08, rotate: -8 }}
+        animate={shouldReduceMotion ? undefined : { y: [0, -16], rotate: [0, -2] }}
+        transition={shouldReduceMotion ? undefined : floatTransition(4.4)}
+      >
+        <img
+          src="/cursor.png"
+          alt=""
+          height={200}
+          width={200}
+          className="contact__draggable-img"
+          draggable="false"
+        />
+        <span className="contact__draggable-label">Drag me</span>
+      </motion.div>
+
+      <motion.div
+        className="contact__draggable contact__draggable--message"
+        drag
+        dragConstraints={dragBoundsRef}
+        dragElastic={0.2}
+        dragMomentum
+        dragTransition={{ bounceStiffness: 220, bounceDamping: 18 }}
+        whileDrag={{ scale: 1.08, rotate: 8 }}
+        animate={shouldReduceMotion ? undefined : { y: [0, -12], rotate: [0, 2] }}
+        transition={shouldReduceMotion ? undefined : floatTransition(5.2)}
+      >
+        <img
+          src="/message.png"
+          alt=""
+          height={200}
+          width={200}
+          className="contact__draggable-img"
+          draggable="false"
+        />
+        <span className="contact__draggable-label">Drop anywhere</span>
+      </motion.div>
     </section>
   );
 };

@@ -5,23 +5,50 @@ import '../styles/global.scss';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Yuliia Martynovych — junior full-stack developer building clean, accessible web interfaces with React, TypeScript and Node.js. Open to junior developer roles.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#faf4ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#241c22" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem("theme");
+        const root = document.documentElement;
+
+        const storedTheme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const shouldUseDark = stored ? stored === "dark" : prefersDark;
-        if (shouldUseDark) {
-          document.documentElement.classList.add("dark");
+        if (storedTheme ? storedTheme === "dark" : prefersDark) {
+          root.classList.add("dark");
+        }
+
+        const langMap = { EN: "en", ES: "es", UA: "uk" };
+        const storedLang = localStorage.getItem("lang");
+        if (storedLang && langMap[storedLang]) {
+          root.lang = langMap[storedLang];
         }
       })();
     </script>

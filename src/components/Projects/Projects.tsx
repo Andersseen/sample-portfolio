@@ -1,39 +1,22 @@
 import { ArrowUpRight } from "lucide-react";
-import { CONTENT } from "@/data/content";
+import { useLang } from "@/lib/useLang";
 import "./Projects.scss";
 
-type ProjectItem = {
-  title: string;
-  description: string;
-  stack: string[];
-  href: string;
-};
-
-type ProjectsContent = {
-  title: string;
-  description: string;
-  items: ProjectItem[];
-};
-
 const Projects = () => {
-  const projectsContent = CONTENT.projects as ProjectsContent;
-  const projects = projectsContent.items;
+  const { content } = useLang();
+  const projects = content.projects;
 
   return (
-    <section
-      className="projects"
-      id="projects"
-      aria-labelledby="projects-title"
-    >
+    <section className="projects" aria-labelledby="projects-title">
       <div className="projects__container">
-        <p className="projects__eyebrow">Selected Work</p>
+        <p className="projects__eyebrow">{projects.eyebrow}</p>
         <h2 className="projects__title" id="projects-title">
-          {projectsContent.title}
+          {projects.title}
         </h2>
-        <p className="projects__lead">{projectsContent.description}</p>
+        <p className="projects__lead">{projects.description}</p>
 
         <div className="projects__grid">
-          {projects.map((project) => (
+          {projects.items.map((project) => (
             <article className="projects__card" key={project.title}>
               <h3 className="projects__card-title">{project.title}</h3>
               <p className="projects__card-description">
@@ -55,7 +38,7 @@ const Projects = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                View project
+                {projects.cta}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </article>

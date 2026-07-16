@@ -301,7 +301,7 @@
   &__draggable {
     position: absolute;
     z-index: $z-overlay;
-    width: clamp(7.8rem, 17vw, 12rem);
+    width: clamp(5.5rem, 10vw, 8.5rem);
     touch-action: none;
     cursor: grab;
     user-select: none;
@@ -316,14 +316,25 @@
       display: inline-block;
     }
 
+    // Tuck the stickers into the outer corners so they never sit over copy.
     &--cursor {
-      left: clamp(0.4rem, 4.2vw, 2.5rem);
-      top: clamp(11rem, 24vw, 15rem);
+      left: clamp(0.25rem, 1vw, 1.25rem);
+      top: clamp(1.5rem, 5vh, 3.5rem);
     }
 
     &--message {
-      right: clamp(0.2rem, 3.2vw, 2rem);
-      top: clamp(15rem, 27vw, 19rem);
+      right: clamp(0.25rem, 1vw, 1.25rem);
+      bottom: clamp(1.5rem, 5vh, 3.5rem);
+    }
+
+    @include respond-to(lg) {
+      &--cursor {
+        left: clamp(1rem, 3vw, 3rem);
+      }
+
+      &--message {
+        right: clamp(1rem, 3vw, 3rem);
+      }
     }
   }
 

@@ -1,31 +1,30 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
+import { useLang } from "@/lib/useLang";
+import { LANG_OPTIONS } from "@/data/content";
 import "./Navbar.scss";
 
-type LangCode = "UA" | "EN" | "ES";
-
-const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+const NAV_ITEMS = [
+  { href: "#home", key: "home" },
+  { href: "#about", key: "about" },
+  { href: "#skills", key: "skills" },
+  { href: "#experience", key: "experience" },
+  { href: "#projects", key: "projects" },
+  { href: "#contact", key: "contact" },
 ] as const;
-
-const LANG_OPTIONS: LangCode[] = ["UA", "EN", "ES"];
 
 export default function Navbar() {
   const [isDesktop, setIsDesktop] = useState(false);
-  const [desktopNavOpen, setDesktopNavOpen] = useState(false);
+  const [desktopNavOpen, setDesktopNavOpen] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState<LangCode>("EN");
+  const { lang, content, changeLang } = useLang();
   const [activeHash, setActiveHash] = useState("#home");
   const langPickerRef = useRef<HTMLDivElement>(null);
 
   const sectionIds = useMemo(
-    () => NAV_LINKS.map((link) => link.href.slice(1)),
+    () => NAV_ITEMS.map((link) => link.href.slice(1)),
     [],
   );
 
@@ -52,6 +51,7 @@ export default function Navbar() {
   useEffect(() => {
     if (isDesktop) {
       setMenuOpen(false);
+      setDesktopNavOpen(true);
     } else {
       setDesktopNavOpen(false);
       setLangOpen(false);
@@ -123,7 +123,7 @@ export default function Navbar() {
 
     const onHashChange = () => {
       const hash = window.location.hash;
-      if (hash && NAV_LINKS.some((link) => link.href === hash)) {
+      if (hash && NAV_ITEMS.some((link) => link.href === hash)) {
         setActiveHash(hash);
       } else {
         syncActiveFromScroll();
@@ -246,7 +246,7 @@ export default function Navbar() {
           </a>
 
           <ul className="site-nav__links">
-            {NAV_LINKS.map((link) => (
+            {NAV_ITEMS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
@@ -257,7 +257,7 @@ export default function Navbar() {
                       : "site-nav__link"
                   }
                 >
-                  {link.label}
+                  {content.nav[link.key]}
                 </a>
               </li>
             ))}
@@ -272,7 +272,7 @@ export default function Navbar() {
                 aria-expanded={langOpen}
                 onClick={() => setLangOpen((prev) => !prev)}
               >
-                {selectedLang}
+                {lang}
                 <ChevronDown
                   size={15}
                   className={
@@ -289,23 +289,23 @@ export default function Navbar() {
                   role="listbox"
                   aria-label="Select language"
                 >
-                  {LANG_OPTIONS.map((lang) => (
-                    <li key={lang}>
+                  {LANG_OPTIONS.map((option) => (
+                    <li key={option}>
                       <button
                         type="button"
                         role="option"
-                        aria-selected={selectedLang === lang}
+                        aria-selected={lang === option}
                         className={
-                          selectedLang === lang
+                          lang === option
                             ? "lang-picker__option is-selected"
                             : "lang-picker__option"
                         }
                         onClick={() => {
-                          setSelectedLang(lang);
+                          changeLang(option);
                           setLangOpen(false);
                         }}
                       >
-                        {lang}
+                        {option}
                       </button>
                     </li>
                   ))}

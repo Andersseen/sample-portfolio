@@ -8,57 +8,59 @@
 :root {
   color-scheme: light;
 
-  --color-primary: oklch(74% 0.08 280);
-  --color-secondary: oklch(82% 0.12 35);
-  --color-background: oklch(98% 0.005 280);
-  --color-foreground: oklch(32% 0.08 280);
+  // Creamy, light palette — dusty rose + warm apricot on a soft cream base.
+  --color-primary: oklch(54.5% 0.122 1.6);
+  --color-secondary: oklch(77.3% 0.098 50.3);
+  --color-background: oklch(97% 0.009 62.6);
+  --color-foreground: oklch(37% 0.027 348.6);
 
-  --color-surface: oklch(100% 0 0 / 0.85);
-  --color-surface-strong: oklch(100% 0 0 / 0.95);
-  --color-border: oklch(32% 0.08 280 / 0.12);
-  --color-muted: oklch(32% 0.08 280 / 0.68);
-  --color-glow-soft: oklch(74% 0.08 280 / 0.18);
-  --color-glow-accent: oklch(82% 0.12 35 / 0.16);
+  --color-surface: oklch(99.5% 0.003 67.8 / 0.82);
+  --color-surface-strong: oklch(99.5% 0.003 67.8 / 0.94);
+  --color-border: oklch(37% 0.027 348.6 / 0.12);
+  --color-muted: oklch(37% 0.027 348.6 / 0.68);
+  --color-glow-soft: oklch(54.5% 0.122 1.6 / 0.14);
+  --color-glow-accent: oklch(77.3% 0.098 50.3 / 0.18);
 
-  --lava-bg-start: oklch(79% 0.06 280);
-  --lava-bg-end: oklch(89% 0.04 280);
-  --lava-blob-start: oklch(82% 0.12 35);
-  --lava-blob-end: oklch(91% 0.08 35);
-  --lava-edge-start: oklch(85% 0.1 35);
-  --lava-edge-end: oklch(97% 0.02 35);
+  --lava-bg-start: oklch(92.3% 0.026 35.7);
+  --lava-bg-end: oklch(95.7% 0.018 54);
+  --lava-blob-start: oklch(82% 0.082 45.4);
+  --lava-blob-end: oklch(90.7% 0.044 52.6);
+  --lava-edge-start: oklch(84.7% 0.071 49.7);
+  --lava-edge-end: oklch(96.5% 0.018 59.5);
 
-  --fg-rgb: 61 53 82;
-  --bg-rgb: 250 249 255;
-  --primary-rgb: 184 168 229;
-  --secondary-rgb: 255 201 184;
+  --fg-rgb: 75 58 66;
+  --bg-rgb: 250 244 239;
+  --primary-rgb: 168 78 107;
+  --secondary-rgb: 232 163 124;
 }
 
 html.dark {
   color-scheme: dark;
 
-  --color-primary: oklch(84% 0.06 280);
-  --color-secondary: oklch(85% 0.1 35);
-  --color-background: oklch(11% 0.04 280);
-  --color-foreground: oklch(96% 0.005 280);
+  // Warm espresso-plum base with the same rose + peach accents, lightened.
+  --color-primary: oklch(77.9% 0.087 0.6);
+  --color-secondary: oklch(82.1% 0.085 50.3);
+  --color-background: oklch(23.8% 0.017 335);
+  --color-foreground: oklch(94% 0.016 46.6);
 
-  --color-surface: oklch(18% 0.05 280 / 0.7);
-  --color-surface-strong: oklch(24% 0.06 280 / 0.92);
-  --color-border: oklch(96% 0.005 280 / 0.15);
-  --color-muted: oklch(96% 0.005 280 / 0.74);
-  --color-glow-soft: oklch(84% 0.06 280 / 0.18);
-  --color-glow-accent: oklch(85% 0.1 35 / 0.14);
+  --color-surface: oklch(28.4% 0.021 336.1 / 0.66);
+  --color-surface-strong: oklch(31.5% 0.023 341.1 / 0.9);
+  --color-border: oklch(94% 0.016 46.6 / 0.16);
+  --color-muted: oklch(94% 0.016 46.6 / 0.74);
+  --color-glow-soft: oklch(77.9% 0.087 0.6 / 0.2);
+  --color-glow-accent: oklch(82.1% 0.085 50.3 / 0.16);
 
-  --lava-bg-start: oklch(39% 0.1 280);
-  --lava-bg-end: oklch(48% 0.1 280);
-  --lava-blob-start: oklch(82% 0.12 35);
-  --lava-blob-end: oklch(85% 0.1 35);
-  --lava-edge-start: oklch(84% 0.11 35);
-  --lava-edge-end: oklch(93% 0.03 280);
+  --lava-bg-start: oklch(29.3% 0.039 343.5);
+  --lava-bg-end: oklch(34.8% 0.05 346.8);
+  --lava-blob-start: oklch(77.9% 0.087 0.6);
+  --lava-blob-end: oklch(82.1% 0.085 50.3);
+  --lava-edge-start: oklch(80.1% 0.079 1.8);
+  --lava-edge-end: oklch(90.6% 0.041 51.4);
 
-  --fg-rgb: 245 242 255;
-  --bg-rgb: 26 22 38;
-  --primary-rgb: 212 201 255;
-  --secondary-rgb: 255 217 202;
+  --fg-rgb: 245 232 226;
+  --bg-rgb: 36 28 34;
+  --primary-rgb: 230 160 180;
+  --secondary-rgb: 242 181 147;
 }
 
 *,

@@ -1,22 +1,25 @@
 ---
 import MainLayout from '@/layouts/MainLayout.astro';
 import LavaLamp from '@/components/LavaLamp/LavaLamp';
-import Skills from '@/components/skills';
-import Contact from '@/components/contact';
-import Projects from '@/components/Projects/Projects';
+import HeroText from '@/components/Hero/HeroText';
 import About from '@/components/About/About';
-import { CONTENT } from '@/data/content';
+import Skills from '@/components/skills';
+import Experience from '@/components/Experience/Experience';
+import Projects from '@/components/Projects/Projects';
+import Contact from '@/components/contact';
 import '@/components/Hero/Hero.scss';
 import './index.scss';
+
+const NAME = 'Yuliia Martynovych';
 ---
 
-<MainLayout title="Yuliia Martynovych | Portfolio">
+<MainLayout title={`${NAME} | Junior Developer`}>
   <main class="home">
     <section class="hero home__hero" id="home">
       <LavaLamp client:load />
       <div class="hero__content">
-        <h1 class="hero__title">{CONTENT.hero.title}</h1>
-        <p class="hero__subtitle">{CONTENT.hero.subtitle}</p>
+        <h1 class="hero__title">{NAME}</h1>
+        <HeroText client:load />
       </div>
     </section>
 
@@ -25,6 +28,9 @@ import './index.scss';
     </div>
     <div class="home__block home__block--skills" id="skills">
       <Skills client:only="react" />
+    </div>
+    <div class="home__block home__block--experience" id="experience">
+      <Experience client:visible />
     </div>
     <div class="home__block home__block--projects" id="projects">
       <Projects client:load />

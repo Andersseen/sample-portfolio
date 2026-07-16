@@ -123,6 +123,10 @@
 .animated-word {
   display: inline-block;
   white-space: nowrap;
+
+  &:not(:last-of-type) {
+    margin-right: 0.3em;
+  }
 }
 
 .animated-char {

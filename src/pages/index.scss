@@ -12,12 +12,13 @@
   &__block--about .about,
   &__block--skills .skills,
   &__block--projects .projects,
-  &__block--contact .lamp {
+  &__block--contact .contact {
     min-height: 100dvh;
   }
 
   &__block--about,
   &__block--skills,
+  &__block--experience,
   &__block--projects,
   &__block--contact {
     position: relative;
@@ -27,6 +28,7 @@
 #home,
 #about,
 #skills,
+#experience,
 #projects,
 #contact {
   scroll-margin-top: 6.2rem;

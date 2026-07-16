@@ -4,6 +4,7 @@ import AnimatedBody from "./AnimatedBody";
 import AnimatedTitle from "./AnimatedTitle";
 import AnimatedTools from "./AnimatedTools";
 import lottie from "lottie-web";
+import { useLang } from "@/lib/useLang";
 import {
   SiGit,
   SiGithub,
@@ -21,6 +22,8 @@ const ICON_SIZE = 40;
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { lang, content } = useLang();
+  const skills = content.skills;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -37,9 +40,10 @@ const Skills = () => {
   }, []);
 
   return (
-    <section className="skills" id="skills">
+    <section className="skills">
       <AnimatedTitle
-        text="TOOLS IM USING"
+        key={lang}
+        text={skills.title}
         className="skills__title"
         wordSpace="animated-word"
         charSpace="animated-char"
@@ -47,7 +51,7 @@ const Skills = () => {
       <div className="skills__content">
         <div className="skills__categories">
           <div className="skills__category">
-            <AnimatedBody delay={0.2} text="Frontend" />
+            <AnimatedBody delay={0.2} text={skills.categories.frontend.label} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--4col"
               delay={0.2}
@@ -61,7 +65,7 @@ const Skills = () => {
             </AnimatedTools>
           </div>
           <div className="skills__category">
-            <AnimatedBody delay={0.3} text="Backend" />
+            <AnimatedBody delay={0.3} text={skills.categories.backend.label} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--4col"
               delay={0.3}
@@ -75,7 +79,7 @@ const Skills = () => {
             </AnimatedTools>
           </div>
           <div className="skills__category">
-            <AnimatedBody delay={0.4} text="Other" />
+            <AnimatedBody delay={0.4} text={skills.categories.other.label} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--2col"
               delay={0.4}
