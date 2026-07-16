@@ -197,38 +197,36 @@ export default function Navbar() {
       className={`site-header ${isDesktop ? "site-header--desktop" : "site-header--mobile"} ${panelOpen ? "is-open" : ""}`}
     >
       <div className="site-header__dock">
-        {(!isDesktop || !desktopNavOpen) && (
-          <button
-            className={`site-header__trigger ${isDesktop ? "site-header__trigger--avatar" : "site-header__trigger--menu"}`}
-            type="button"
-            aria-expanded={panelOpen}
-            aria-controls="site-nav-panel"
-            onClick={handlePrimaryToggle}
-            aria-label={
-              isDesktop
-                ? panelOpen
-                  ? "Collapse navigation"
-                  : "Expand navigation"
-                : panelOpen
-                  ? "Close menu"
-                  : "Open menu"
-            }
-          >
-            {isDesktop ? (
-              <span className="site-header__avatar" aria-hidden="true">
-                YM
-              </span>
-            ) : panelOpen ? (
-              <X size={18} />
-            ) : (
-              <Menu size={18} />
-            )}
-          </button>
-        )}
+        <button
+          className={`site-header__trigger ${isDesktop ? "site-header__trigger--avatar" : "site-header__trigger--menu"}`}
+          type="button"
+          aria-expanded={panelOpen}
+          aria-controls="site-nav-panel"
+          onClick={handlePrimaryToggle}
+          aria-label={
+            isDesktop
+              ? panelOpen
+                ? "Collapse navigation"
+                : "Expand navigation"
+              : panelOpen
+                ? "Close menu"
+                : "Open menu"
+          }
+        >
+          {isDesktop ? (
+            <span className="site-header__avatar" aria-hidden="true">
+              YM
+            </span>
+          ) : panelOpen ? (
+            <X size={18} />
+          ) : (
+            <Menu size={18} />
+          )}
+        </button>
 
         <nav
           id="site-nav-panel"
-          className={`site-nav ${panelOpen ? "is-open" : ""}`}
+          className={`site-nav ${panelOpen ? "is-open" : ""} ${langOpen ? "site-nav--lang-open" : ""}`}
           aria-label="Primary"
         >
           <a
