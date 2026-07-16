@@ -18,7 +18,7 @@ import {
 } from "react-icons/si";
 import { CONTENT } from "@/data/content";
 
-const ICON_SIZE = 50;
+const ICON_SIZE = 40;
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
