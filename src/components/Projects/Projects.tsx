@@ -5,11 +5,13 @@ import "./Projects.scss";
 type ProjectItem = {
   title: string;
   description: string;
+  outcome: string;
   stack: string[];
   href: string;
 };
 
 type ProjectsContent = {
+  eyebrow: string;
   title: string;
   description: string;
   items: ProjectItem[];
@@ -26,7 +28,7 @@ const Projects = () => {
       aria-labelledby="projects-title"
     >
       <div className="projects__container">
-        <p className="projects__eyebrow">Selected Work</p>
+        <p className="projects__eyebrow">{projectsContent.eyebrow}</p>
         <h2 className="projects__title" id="projects-title">
           {projectsContent.title}
         </h2>
@@ -39,6 +41,7 @@ const Projects = () => {
               <p className="projects__card-description">
                 {project.description}
               </p>
+              <p className="projects__outcome">{project.outcome}</p>
               <ul
                 className="projects__stack"
                 aria-label={`${project.title} stack`}

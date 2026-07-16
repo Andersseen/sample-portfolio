@@ -16,11 +16,13 @@ import {
   SiMongodb,
   SiNodedotjs,
 } from "react-icons/si";
+import { CONTENT } from "@/data/content";
 
 const ICON_SIZE = 50;
 
 const Skills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { skills } = CONTENT;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -38,16 +40,18 @@ const Skills = () => {
 
   return (
     <section className="skills" id="skills">
+      <p className="skills__eyebrow">{skills.eyebrow}</p>
       <AnimatedTitle
-        text="TOOLS IM USING."
+        text={skills.title}
         className="skills__title"
         wordSpace="animated-word"
         charSpace="animated-char"
       />
+      <p className="skills__lead">{skills.description}</p>
       <div className="skills__content">
         <div className="skills__categories">
           <div className="skills__category">
-            <AnimatedBody delay={0.2} text="Frontend" />
+            <AnimatedBody delay={0.2} text={skills.categories.frontend} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--4col"
               delay={0.2}
@@ -61,7 +65,7 @@ const Skills = () => {
             </AnimatedTools>
           </div>
           <div className="skills__category">
-            <AnimatedBody delay={0.3} text="Backend" />
+            <AnimatedBody delay={0.3} text={skills.categories.backend} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--4col"
               delay={0.3}
@@ -75,7 +79,7 @@ const Skills = () => {
             </AnimatedTools>
           </div>
           <div className="skills__category">
-            <AnimatedBody delay={0.4} text="Other" />
+            <AnimatedBody delay={0.4} text={skills.categories.workflow} />
             <AnimatedTools
               className="skills__tools-grid skills__tools-grid--2col"
               delay={0.4}

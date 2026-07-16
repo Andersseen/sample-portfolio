@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
+import { CONTENT } from "@/data/content";
 import "./About.scss";
 
 const About = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { about } = CONTENT;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -21,19 +23,28 @@ const About = () => {
 
   return (
     <section className="about" id="about" aria-labelledby="about-title">
-      <div className="about__animation">
+      <div className="about__visual" aria-hidden="true">
         <div ref={containerRef} className="about__lottie" />
       </div>
       <div className="about__text">
+        <p className="about__eyebrow">{about.eyebrow}</p>
         <h2 className="about__title" id="about-title">
-          About Us
+          {about.title}
         </h2>
-        <p className="about__description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+        <p className="about__description">{about.description}</p>
+        <ul className="about__details">
+          {about.details.map((detail) => (
+            <li key={detail}>{detail}</li>
+          ))}
+        </ul>
+        <dl className="about__stats">
+          {about.stats.map((stat) => (
+            <div className="about__stat" key={stat.label}>
+              <dt>{stat.value}</dt>
+              <dd>{stat.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
