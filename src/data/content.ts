@@ -1,65 +1,89 @@
 export const CONTENT = {
   hero: {
     title: "Yuliia Martynovych",
-    subtitle: "Full Stack Developer",
+    eyebrow: "Full Stack Developer",
+    subtitle:
+      "I design and build polished web products with clear UX, reliable architecture and the kind of details that make interfaces feel effortless.",
+    primaryCta: "View work",
+    secondaryCta: "Contact",
+    highlights: ["React + TypeScript", "Product UX", "Scalable web apps"],
   },
   about: {
-    title: "About Me",
+    eyebrow: "Profile",
+    title: "A developer who connects product thinking with clean execution.",
     description:
-      "I'm a passionate developer with expertise in modern web technologies. With over 5 years of experience, I specialize in creating beautiful and functional web applications.",
+      "Yuliia turns early ideas into coherent digital experiences: clear flows, thoughtful interfaces and maintainable systems. Her work sits between frontend craft, backend reliability and pragmatic product decisions.",
+    details: [
+      "Builds interfaces that are fast, accessible and easy to evolve.",
+      "Works comfortably across React, TypeScript, Node.js and data layers.",
+      "Keeps communication sharp, so teams know what is being built and why.",
+    ],
+    stats: [
+      { value: "5+", label: "Years building for the web" },
+      { value: "20+", label: "Product features shipped" },
+      { value: "3", label: "Languages for collaboration" },
+    ],
   },
   projects: {
-    title: "Featured Projects",
+    eyebrow: "Selected work",
+    title: "Projects shaped around real product outcomes.",
     description:
-      "A selection of products focused on performance, strong UX and maintainable architecture.",
+      "A concise snapshot of the kind of work Yuliia brings together: useful dashboards, operational tools, content systems and mobile-ready product experiences.",
     items: [
       {
-        title: "Commerce Analytics Dashboard",
+        title: "Commerce Intelligence Dashboard",
         description:
-          "Real-time sales and retention dashboard with custom widgets, role-based access and offline-ready charts.",
+          "A focused analytics workspace for sales, retention and inventory signals, designed for teams that need quick decisions without spreadsheet drift.",
+        outcome: "Reduced daily reporting time with reusable widgets and clear data states.",
         stack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
         href: "https://github.com",
       },
       {
-        title: "Hospital Appointment Platform",
+        title: "Appointment Operations Platform",
         description:
-          "Scheduling platform with smart availability, secure patient records and async notifications.",
+          "A scheduling product with smart availability, secure records and async notifications for high-volume service teams.",
+        outcome: "Improved booking clarity with predictable flows and role-based access.",
         stack: ["Next.js", "Prisma", "Tailwind", "Redis"],
         href: "https://github.com",
       },
       {
-        title: "Travel Planning App",
+        title: "Collaborative Travel Planner",
         description:
-          "Collaborative itinerary builder with maps, live weather and optimized route planning for teams.",
+          "A mobile-first itinerary builder that combines shared planning, maps, weather context and route optimization.",
+        outcome: "Made group planning feel lighter with real-time updates and clean task ownership.",
         stack: ["React Native", "Firebase", "GraphQL"],
         href: "https://github.com",
       },
       {
-        title: "Portfolio CMS",
+        title: "Editorial Portfolio CMS",
         description:
-          "Lightweight content management layer for personal sites with markdown workflows and media pipelines.",
+          "A lightweight publishing layer for personal sites, with markdown workflows, structured content and image pipelines.",
+        outcome: "Gave non-technical updates a simple workflow without losing design control.",
         stack: ["Astro", "TypeScript", "Supabase"],
         href: "https://github.com",
       },
     ],
   },
   contact: {
-    title: "Contact Me",
-    namePlaceholder: "Your Name",
-    emailPlaceholder: "Your Email",
-    messagePlaceholder: "Your Message",
-    submitButton: "Send Message",
+    eyebrow: "Available for selected projects",
+    title: "Let’s turn the next good idea into a product people trust.",
+    description:
+      "Reach out for product builds, frontend systems, technical polish or a practical second brain on a web product already in motion.",
+    email: "hello@yuliiam.dev",
+    calendar: "https://cal.com",
+    github: "https://github.com",
+    linkedin: "https://www.linkedin.com",
   },
   skills: {
-    title: "Skills",
-    items: [
-      { name: "Frontend Development", percentage: 90 },
-      { name: "Backend Development", percentage: 85 },
-      { name: "UI/UX Design", percentage: 75 },
-      { name: "DevOps", percentage: 80 },
-      { name: "Mobile Development", percentage: 70 },
-      { name: "Database Management", percentage: 85 },
-    ],
+    eyebrow: "Toolkit",
+    title: "Tools chosen for shipping, not showing off.",
+    description:
+      "The stack is modern, but the priority is simple: readable code, resilient data flows and interfaces that make sense to real users.",
+    categories: {
+      frontend: "Frontend",
+      backend: "Backend",
+      workflow: "Workflow",
+    },
   },
   experience: {
     title: "Experience",

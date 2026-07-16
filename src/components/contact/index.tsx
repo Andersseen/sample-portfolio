@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useRef } from "react";
+import { CONTENT } from "@/data/content";
 import "./contact.scss";
 
 const FADE_UP = {
@@ -23,29 +24,6 @@ type ContactAction = {
   href: string;
   external?: boolean;
 };
-
-const CONTACT_ACTIONS: ContactAction[] = [
-  {
-    icon: Mail,
-    title: "Send an email",
-    description: "Best for proposals, scope details and long-form context.",
-    href: "mailto:hello@johndoe.dev",
-  },
-  {
-    icon: CalendarCheck2,
-    title: "Book a strategy call",
-    description: "30-minute discovery session to shape your roadmap.",
-    href: "https://cal.com",
-    external: true,
-  },
-  {
-    icon: Linkedin,
-    title: "Connect on LinkedIn",
-    description: "Ideal for networking, hiring and collaboration chats.",
-    href: "https://www.linkedin.com",
-    external: true,
-  },
-];
 
 const floatTransition = (duration: number) => ({
   duration,
@@ -63,6 +41,29 @@ const fadeTransition = (delay: number) => ({
 export const Contact = () => {
   const dragBoundsRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const { contact } = CONTENT;
+  const contactActions: ContactAction[] = [
+    {
+      icon: Mail,
+      title: "Send an email",
+      description: "Best for proposals, scope details and long-form context.",
+      href: `mailto:${contact.email}`,
+    },
+    {
+      icon: CalendarCheck2,
+      title: "Book a strategy call",
+      description: "30-minute discovery session to shape the roadmap.",
+      href: contact.calendar,
+      external: true,
+    },
+    {
+      icon: Linkedin,
+      title: "Connect on LinkedIn",
+      description: "Ideal for hiring, networking and collaboration chats.",
+      href: contact.linkedin,
+      external: true,
+    },
+  ];
 
   return (
     <section className="contact" id="contact" aria-labelledby="contact-title">
@@ -75,7 +76,7 @@ export const Contact = () => {
               {...FADE_UP}
               transition={fadeTransition(0.08)}
             >
-              Available for selected projects
+              {contact.eyebrow}
             </motion.p>
             <motion.h1
               className="contact__title"
@@ -83,16 +84,14 @@ export const Contact = () => {
               {...FADE_UP}
               transition={fadeTransition(0.16)}
             >
-              Let&apos;s craft a product people remember.
+              {contact.title}
             </motion.h1>
             <motion.p
               className="contact__lead"
               {...FADE_UP}
               transition={fadeTransition(0.24)}
             >
-              I help teams design and build performant interfaces with solid UX.
-              From strategy to shipping, we can move fast without sacrificing
-              quality.
+              {contact.description}
             </motion.p>
 
             <motion.div
@@ -102,14 +101,14 @@ export const Contact = () => {
             >
               <a
                 className="contact__cta contact__cta--primary"
-                href="mailto:hello@johndoe.dev"
+                href={`mailto:${contact.email}`}
               >
                 Start a project
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
               <a
                 className="contact__cta contact__cta--ghost"
-                href="https://cal.com"
+                href={contact.calendar}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -124,7 +123,7 @@ export const Contact = () => {
             >
               <a
                 className="contact__social-link"
-                href="https://github.com"
+                href={contact.github}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Open GitHub profile"
@@ -134,7 +133,7 @@ export const Contact = () => {
               </a>
               <a
                 className="contact__social-link"
-                href="https://www.linkedin.com"
+                href={contact.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Open LinkedIn profile"
@@ -156,7 +155,7 @@ export const Contact = () => {
               Choose the best way to reach me
             </h2>
             <div className="contact__actions">
-              {CONTACT_ACTIONS.map((action) => {
+              {contactActions.map((action) => {
                 const Icon = action.icon;
 
                 return (

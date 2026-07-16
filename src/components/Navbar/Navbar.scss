@@ -1,6 +1,9 @@
 @use "../../styles/variables" as *;
 
 .site-header {
+  --nav-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --nav-duration: 0.48s;
+
   position: fixed;
   top: 1rem;
   left: 0;
@@ -28,14 +31,22 @@
     backdrop-filter: blur(16px);
     box-shadow: 0 12px 28px rgb(var(--fg-rgb) / 0.14);
     cursor: pointer;
+    position: relative;
+    z-index: 2;
     transition:
-      transform $transition-fast,
-      background-color $transition-fast,
-      border-color $transition-fast;
+      transform 0.28s var(--nav-ease),
+      background-color 0.28s ease,
+      border-color 0.28s ease,
+      box-shadow 0.28s ease;
 
     &:hover {
-      transform: translateY(1px);
+      transform: translateY(-1px) scale(1.02);
       background: var(--color-surface-strong);
+      box-shadow: 0 16px 34px rgb(var(--fg-rgb) / 0.16);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
     }
 
     &:focus-visible {
@@ -105,6 +116,7 @@
     gap: 0.52rem;
     color: var(--color-foreground);
     text-decoration: none;
+    min-width: max-content;
   }
 
   &__logo {
@@ -163,12 +175,17 @@
     border-radius: 0.7rem;
     padding: 0 0.72rem;
     border: 1px solid transparent;
-    transition: all $transition-fast;
+    transition:
+      color 0.24s ease,
+      background-color 0.24s ease,
+      border-color 0.24s ease,
+      transform 0.24s var(--nav-ease);
 
     &:hover {
       color: var(--color-foreground);
       background: var(--color-surface);
       border-color: var(--color-border);
+      transform: translateY(-1px);
     }
 
     &.is-active {
@@ -202,12 +219,18 @@
     justify-content: center;
     cursor: pointer;
     transition:
-      transform $transition-fast,
-      background-color $transition-fast;
+      transform 0.24s var(--nav-ease),
+      background-color 0.24s ease,
+      box-shadow 0.24s ease;
 
     &:hover {
-      transform: translateY(1px);
+      transform: translateY(-1px);
       background: var(--color-surface-strong);
+      box-shadow: 0 8px 18px rgb(var(--fg-rgb) / 0.1);
+    }
+
+    &:active {
+      transform: scale(0.96);
     }
 
     &:focus-visible {
@@ -235,6 +258,16 @@
     font-size: 0.78rem;
     line-height: 1;
     cursor: pointer;
+    transition:
+      background-color 0.24s ease,
+      border-color 0.24s ease,
+      transform 0.24s var(--nav-ease);
+
+    &:hover {
+      transform: translateY(-1px);
+      background: var(--color-surface-strong);
+      border-color: rgb(var(--primary-rgb) / 0.3);
+    }
   }
 
   &__chevron {
@@ -256,7 +289,7 @@
     background: var(--color-surface-strong);
     box-shadow: 0 14px 28px rgb(var(--fg-rgb) / 0.2);
     padding: 0.3rem;
-    z-index: 12;
+    z-index: 30;
   }
 
   &__option {
@@ -298,9 +331,16 @@
   .site-header--desktop {
     .site-header__dock {
       justify-content: flex-end;
+      align-items: stretch;
+    }
+
+    .site-header__trigger {
+      order: 2;
+      flex: 0 0 auto;
     }
 
     .site-nav {
+      order: 1;
       flex: 1;
       display: grid;
       grid-template-columns: auto 1fr auto;
@@ -311,26 +351,75 @@
       opacity: 0;
       overflow: hidden;
       white-space: nowrap;
-      padding: 0;
-      border-width: 0;
-      box-shadow: none;
+      visibility: hidden;
+      padding: 0.62rem 0;
+      border-width: 1px;
+      box-shadow: 0 8px 18px rgb(var(--fg-rgb) / 0);
       pointer-events: none;
       transform-origin: right center;
+      transform: translateX(0.35rem) scaleX(0.96);
+      clip-path: inset(0 0 0 100% round 1rem);
       transition:
-        max-width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.2s ease,
-        padding 0.34s cubic-bezier(0.22, 1, 0.36, 1),
-        border-width 0.2s ease,
-        box-shadow 0.2s ease;
+        max-width var(--nav-duration) var(--nav-ease),
+        padding var(--nav-duration) var(--nav-ease),
+        clip-path var(--nav-duration) var(--nav-ease),
+        transform var(--nav-duration) var(--nav-ease),
+        opacity 0.22s ease,
+        box-shadow 0.3s ease,
+        visibility 0s linear var(--nav-duration);
+    }
+
+    .site-nav__brand,
+    .site-nav__links,
+    .site-nav__controls {
+      opacity: 0;
+      transform: translateX(0.8rem);
+      transition:
+        opacity 0.18s ease,
+        transform 0.28s var(--nav-ease);
     }
 
     &.is-open .site-nav {
       max-width: 66rem;
       opacity: 1;
       padding: 0.62rem 1rem;
-      border-width: 1px;
       box-shadow: 0 12px 30px rgb(var(--fg-rgb) / 0.13);
       pointer-events: auto;
+      visibility: visible;
+      transform: translateX(0) scaleX(1);
+      clip-path: inset(0 0 0 0 round 1rem);
+      transition:
+        max-width var(--nav-duration) var(--nav-ease),
+        padding var(--nav-duration) var(--nav-ease),
+        clip-path var(--nav-duration) var(--nav-ease),
+        transform var(--nav-duration) var(--nav-ease),
+        opacity 0.22s ease,
+        box-shadow 0.35s ease,
+        visibility 0s linear 0s;
+    }
+
+    &.is-open .site-nav--lang-open {
+      overflow: visible;
+      clip-path: none;
+    }
+
+    &.is-open .site-nav__brand,
+    &.is-open .site-nav__links,
+    &.is-open .site-nav__controls {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    &.is-open .site-nav__brand {
+      transition-delay: 0.08s;
+    }
+
+    &.is-open .site-nav__links {
+      transition-delay: 0.13s;
+    }
+
+    &.is-open .site-nav__controls {
+      transition-delay: 0.18s;
     }
 
     .site-nav__logo {
@@ -351,5 +440,15 @@
     .site-nav__brand-name {
       font-size: 0.82rem;
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .site-header *,
+  .site-nav,
+  .site-nav * {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }

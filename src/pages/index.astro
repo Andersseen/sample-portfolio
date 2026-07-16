@@ -15,8 +15,20 @@ import './index.scss';
     <section class="hero home__hero" id="home">
       <LavaLamp client:load />
       <div class="hero__content">
+        <p class="hero__eyebrow">{CONTENT.hero.eyebrow}</p>
         <h1 class="hero__title">{CONTENT.hero.title}</h1>
         <p class="hero__subtitle">{CONTENT.hero.subtitle}</p>
+        <div class="hero__actions" aria-label="Portfolio actions">
+          <a class="hero__button hero__button--primary" href="#projects">
+            {CONTENT.hero.primaryCta}
+          </a>
+          <a class="hero__button hero__button--secondary" href="#contact">
+            {CONTENT.hero.secondaryCta}
+          </a>
+        </div>
+        <ul class="hero__highlights" aria-label="Professional highlights">
+          {CONTENT.hero.highlights.map((item) => <li>{item}</li>)}
+        </ul>
       </div>
     </section>
 
