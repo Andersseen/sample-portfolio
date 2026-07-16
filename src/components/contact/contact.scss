@@ -342,6 +342,8 @@
     width: 100%;
     height: auto;
     pointer-events: none;
+    // Recolour the purple 3D stickers to the site's rose/peach palette.
+    filter: hue-rotate(70deg) saturate(0.9) brightness(1.04);
   }
 
   &__draggable-label {
