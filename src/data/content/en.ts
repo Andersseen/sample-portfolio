@@ -11,27 +11,28 @@ export const en: Content = {
     contact: "Contact",
   },
   hero: {
-    role: "Junior Full-Stack Developer",
-    tagline: "I build clean, accessible web interfaces with React & TypeScript.",
+    role: "Frontend UI Developer / Web Layout Developer",
+    tagline:
+      "I build modern, responsive and accessible interfaces from Figma designs.",
   },
   about: {
     title: "About Me",
     description:
-      "I'm a junior full-stack developer who fell in love with building for the web. After completing an intensive bootcamp and shipping a handful of personal projects, I focus on writing clean, accessible React & TypeScript — and I learn something new with every commit. I'm looking for a team where I can grow and contribute from day one.",
+      "I'm a Frontend UI Developer focused on web layout and modern, accessible, responsive interfaces. I work with HTML5, CSS3, SCSS and BEM, with attention to visual detail, mobile-first adaptation and cross-browser consistency. I also have JavaScript knowledge for basic interactivity and experience with WordPress, Divi and Elementor.",
     stats: [
-      { value: "12+", label: "Projects built" },
-      { value: "10+", label: "Technologies" },
-      { value: "3", label: "Certifications" },
+      { value: "C2", label: "Spanish" },
+      { value: "B2", label: "English" },
+      { value: "UA", label: "Native" },
     ],
     cta: "View my work",
     cvCta: "Download CV",
   },
   skills: {
-    title: "Tools I'm Using",
+    title: "Skills & Tools",
     categories: {
-      frontend: { label: "Frontend", tools: [] },
-      backend: { label: "Backend", tools: [] },
-      other: { label: "Other", tools: [] },
+      frontend: { label: "Layout & Frontend UI", tools: [] },
+      backend: { label: "Tools", tools: [] },
+      other: { label: "Additional knowledge", tools: [] },
     },
   },
   experience: {
@@ -40,26 +41,34 @@ export const en: Content = {
     items: [
       {
         period: "2024",
-        title: "Full-Stack Web Development Bootcamp",
-        org: "Certified graduate",
+        title: "Frontend Developer",
+        org: "Mate Academy",
         description:
-          "600+ hours of JavaScript, React, Node.js and databases, closing with a capstone team project shipped to production.",
+          "Practical training focused on web layout, responsive interfaces, HTML, CSS, JavaScript and frontend development best practices.",
         kind: "education",
       },
       {
         period: "2024",
-        title: "Freelance & Volunteer Projects",
-        org: "Self-employed",
+        title: "Web Application Development",
+        org: "Grupo Fidsoft",
         description:
-          "Built responsive landing pages and small web apps for a local business and a non-profit — from design hand-off to deployment.",
-        kind: "work",
+          "Learning path oriented toward web application creation, project structure, interface work and programming fundamentals.",
+        kind: "education",
       },
       {
-        period: "2023 — Now",
-        title: "Always learning",
-        org: "Self-taught",
+        period: "2023",
+        title: "Bienestar Integral",
+        org: "IES La Arboleda",
         description:
-          "Sharpening my skills every week with side projects, open source and courses. Currently going deeper on TypeScript and testing.",
+          "Complementary training that strengthens communication, personal organisation and attention to detail in professional environments.",
+        kind: "education",
+      },
+      {
+        period: "Ukraine",
+        title: "Complete Secondary School I-III",
+        org: "Secondary education",
+        description:
+          "General academic foundation completed before continuing technical and professional training in Spain.",
         kind: "education",
       },
     ],
@@ -103,8 +112,8 @@ export const en: Content = {
   },
   contact: {
     eyebrow: "Open to opportunities",
-    title: "Let's build something together.",
-    lead: "I'm looking for my first junior developer role and open to freelance work. If you think I'd be a good fit for your team, I'd love to hear from you.",
+    title: "Let's talk about your next interface.",
+    lead: "I'm open to opportunities as a Frontend UI Developer, web layout developer or junior frontend profile. I bring visual care, organised code and a strong drive to keep growing.",
     ctaPrimary: "Email me",
     ctaSecondary: "Download CV",
     panelKicker: "Preferred channels",

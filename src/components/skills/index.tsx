@@ -6,16 +6,17 @@ import AnimatedTools from "./AnimatedTools";
 import lottie from "lottie-web";
 import { useLang } from "@/lib/useLang";
 import {
+  SiCss3,
+  SiElementor,
+  SiFigma,
   SiGit,
   SiGithub,
-  SiPostgresql,
-  SiMysql,
+  SiGooglechrome,
+  SiHtml5,
   SiJavascript,
-  SiNextdotjs,
-  SiReact,
-  SiTypescript,
-  SiMongodb,
-  SiNodedotjs,
+  SiSass,
+  SiVisualstudiocode,
+  SiWordpress,
 } from "react-icons/si";
 
 const ICON_SIZE = 40;
@@ -58,10 +59,10 @@ const Skills = () => {
               stepSize={0.1}
               iconSize={ICON_SIZE}
             >
-              <SiTypescript size={ICON_SIZE} />
+              <SiHtml5 size={ICON_SIZE} />
+              <SiCss3 size={ICON_SIZE} />
+              <SiSass size={ICON_SIZE} />
               <SiJavascript size={ICON_SIZE} />
-              <SiReact size={ICON_SIZE} />
-              <SiNextdotjs size={ICON_SIZE} />
             </AnimatedTools>
           </div>
           <div className="skills__category">
@@ -72,22 +73,23 @@ const Skills = () => {
               stepSize={0.1}
               iconSize={ICON_SIZE}
             >
-              <SiPostgresql size={ICON_SIZE} />
-              <SiMysql size={ICON_SIZE} />
-              <SiMongodb size={ICON_SIZE} />
-              <SiNodedotjs size={ICON_SIZE} />
+              <SiFigma size={ICON_SIZE} />
+              <SiGit size={ICON_SIZE} />
+              <SiGithub size={ICON_SIZE} />
+              <SiVisualstudiocode size={ICON_SIZE} />
             </AnimatedTools>
           </div>
           <div className="skills__category">
             <AnimatedBody delay={0.4} text={skills.categories.other.label} />
             <AnimatedTools
-              className="skills__tools-grid skills__tools-grid--2col"
+              className="skills__tools-grid skills__tools-grid--3col"
               delay={0.4}
               stepSize={0.1}
               iconSize={ICON_SIZE}
             >
-              <SiGithub size={ICON_SIZE} />
-              <SiGit size={ICON_SIZE} />
+              <SiGooglechrome size={ICON_SIZE} />
+              <SiWordpress size={ICON_SIZE} />
+              <SiElementor size={ICON_SIZE} />
             </AnimatedTools>
           </div>
         </div>

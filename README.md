@@ -1,13 +1,13 @@
 # Yuliia Martynovych — Portfolio
 
-Personal landing portfolio for a junior full-stack developer, built with **Astro 5** (islands architecture), **React** and **SCSS**. Fully responsive, light/dark themed, and available in **English, Spanish and Ukrainian**.
+Personal landing portfolio for a Frontend UI Developer / web layout developer, built with **Astro 5** (islands architecture), **React** and **SCSS**. Fully responsive, light/dark themed, and available in **English, Spanish and Ukrainian**.
 
 ## Sections
 
 - **Hero** — animated lava-lamp background, name, role and tagline.
 - **About** — intro, key stats, "View my work" CTA and a **Download CV** button.
-- **Skills** — animated tools grid (Frontend / Backend / Other) with a Lottie illustration.
-- **Experience** — vertical timeline of education and work.
+- **Skills** — animated tools grid for layout/frontend UI, daily tools and additional knowledge.
+- **Experience** — vertical timeline of education and training.
 - **Projects** — featured project cards with tech-stack tags.
 - **Contact** — reach-out channels, socials and playful draggable stickers.
 

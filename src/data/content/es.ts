@@ -11,28 +11,28 @@ export const es: Content = {
     contact: "Contacto",
   },
   hero: {
-    role: "Desarrolladora Full-Stack Junior",
+    role: "Frontend UI Developer / Maquetadora Web",
     tagline:
-      "Creo interfaces web limpias y accesibles con React y TypeScript.",
+      "Maqueto interfaces modernas, responsive y accesibles a partir de diseños en Figma.",
   },
   about: {
     title: "Sobre mí",
     description:
-      "Soy desarrolladora full-stack junior y me enamoré de construir para la web. Tras completar un bootcamp intensivo y publicar varios proyectos propios, me centro en escribir React y TypeScript limpio y accesible, y aprendo algo nuevo en cada commit. Busco un equipo en el que crecer y aportar desde el primer día.",
+      "Soy Frontend UI Developer especializada en maquetación web y creación de interfaces modernas, accesibles y responsive. Trabajo con HTML5, CSS3, SCSS y metodología BEM, cuidando el detalle visual, la adaptación mobile-first y la consistencia entre navegadores. También tengo conocimientos de JavaScript para interactividad básica y experiencia con WordPress, Divi y Elementor.",
     stats: [
-      { value: "12+", label: "Proyectos" },
-      { value: "10+", label: "Tecnologías" },
-      { value: "3", label: "Certificaciones" },
+      { value: "C2", label: "Español" },
+      { value: "B2", label: "Inglés" },
+      { value: "UA", label: "Nativo" },
     ],
     cta: "Ver mi trabajo",
     cvCta: "Descargar CV",
   },
   skills: {
-    title: "Herramientas Que Uso",
+    title: "Skills y Herramientas",
     categories: {
-      frontend: { label: "Frontend", tools: [] },
-      backend: { label: "Backend", tools: [] },
-      other: { label: "Otras", tools: [] },
+      frontend: { label: "Maquetación y Frontend UI", tools: [] },
+      backend: { label: "Herramientas", tools: [] },
+      other: { label: "Conocimientos adicionales", tools: [] },
     },
   },
   experience: {
@@ -41,26 +41,34 @@ export const es: Content = {
     items: [
       {
         period: "2024",
-        title: "Bootcamp de Desarrollo Web Full-Stack",
-        org: "Graduada certificada",
+        title: "Frontend Developer",
+        org: "Mate Academy",
         description:
-          "Más de 600 horas de JavaScript, React, Node.js y bases de datos, con un proyecto final en equipo desplegado en producción.",
+          "Formación práctica centrada en maquetación web, interfaces responsive, HTML, CSS, JavaScript y buenas prácticas de desarrollo frontend.",
         kind: "education",
       },
       {
         period: "2024",
-        title: "Proyectos freelance y de voluntariado",
-        org: "Autónoma",
+        title: "Desarrollo de Aplicaciones Web",
+        org: "Grupo Fidsoft",
         description:
-          "Desarrollé landing pages responsive y pequeñas apps para un negocio local y una ONG: del diseño al despliegue.",
-        kind: "work",
+          "Aprendizaje orientado a la creación de aplicaciones web, estructura de proyectos, trabajo con interfaces y fundamentos de programación.",
+        kind: "education",
       },
       {
-        period: "2023 — Ahora",
-        title: "Siempre aprendiendo",
-        org: "Autodidacta",
+        period: "2023",
+        title: "Bienestar Integral",
+        org: "IES La Arboleda",
         description:
-          "Mejoro cada semana con proyectos propios, open source y cursos. Ahora profundizo en TypeScript y testing.",
+          "Formación complementaria que refuerza la comunicación, la organización personal y la atención al detalle en entornos profesionales.",
+        kind: "education",
+      },
+      {
+        period: "Ucrania",
+        title: "Complete Secondary School I-III",
+        org: "Educación secundaria",
+        description:
+          "Base académica general completada antes de continuar la formación técnica y profesional en España.",
         kind: "education",
       },
     ],
@@ -104,8 +112,8 @@ export const es: Content = {
   },
   contact: {
     eyebrow: "Abierta a oportunidades",
-    title: "Construyamos algo juntos.",
-    lead: "Busco mi primer puesto como desarrolladora junior y estoy abierta a trabajo freelance. Si crees que encajo en tu equipo, me encantará saber de ti.",
+    title: "Hablemos de tu próxima interfaz.",
+    lead: "Estoy abierta a oportunidades como Frontend UI Developer, maquetadora web o roles junior de frontend. Puedo aportar cuidado visual, orden en el código y muchas ganas de seguir creciendo.",
     ctaPrimary: "Escríbeme",
     ctaSecondary: "Descargar CV",
     panelKicker: "Canales preferidos",
