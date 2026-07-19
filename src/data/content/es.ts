@@ -101,13 +101,6 @@ export const es: Content = {
         stack: ["Next.js", "TypeScript", "Stripe"],
         href: LINKS.projects.shop,
       },
-      {
-        title: "Este Portfolio",
-        description:
-          "La web en la que estás ahora: hecha con islas de Astro, SCSS y un sistema de color oklch ajustado a mano, responsive y con modo claro y oscuro.",
-        stack: ["Astro", "React", "SCSS"],
-        href: LINKS.projects.portfolio,
-      },
     ],
   },
   contact: {

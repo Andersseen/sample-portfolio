@@ -36,13 +36,11 @@ sharing the `Content` type in `types.ts`. Language switching is handled by the
 `useLang()` hook (`src/lib/useLang.ts`), which keeps every React island in sync and
 persists the choice in `localStorage`.
 
-Personal links, email and the CV path are centralised in `src/data/content/links.ts` —
-**update the `TODO` placeholders there** with the real profiles.
+Personal links, email and the CV path are centralised in `src/data/content/links.ts`.
 
 ### Things to replace before publishing
 
-- `src/data/content/links.ts` — GitHub, LinkedIn, email and project URLs.
-- `public/cv-yuliia-martynovych.pdf` — placeholder CV (swap for the real PDF).
+- Project URLs in `src/data/content/links.ts` when final project repositories or demos are ready.
 - `public/about-animation.json` / `public/skills-animation.json` — Lottie illustrations
   (currently free-tier placeholders from [LottieFiles](https://lottiefiles.com); double-check the
   licence or swap for your own before publishing).

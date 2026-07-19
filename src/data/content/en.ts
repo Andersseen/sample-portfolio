@@ -101,13 +101,6 @@ export const en: Content = {
         stack: ["Next.js", "TypeScript", "Stripe"],
         href: LINKS.projects.shop,
       },
-      {
-        title: "This Portfolio",
-        description:
-          "The site you're on now — built with Astro islands, SCSS and a hand-tuned oklch colour system, fully responsive with light & dark themes.",
-        stack: ["Astro", "React", "SCSS"],
-        href: LINKS.projects.portfolio,
-      },
     ],
   },
   contact: {

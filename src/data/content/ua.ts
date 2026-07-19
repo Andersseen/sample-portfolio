@@ -101,13 +101,6 @@ export const ua: Content = {
         stack: ["Next.js", "TypeScript", "Stripe"],
         href: LINKS.projects.shop,
       },
-      {
-        title: "Це портфоліо",
-        description:
-          "Сайт, на якому ви зараз — на островах Astro, SCSS і вручну налаштованій системі кольорів oklch, повністю адаптивний зі світлою й темною темами.",
-        stack: ["Astro", "React", "SCSS"],
-        href: LINKS.projects.portfolio,
-      },
     ],
   },
   contact: {

@@ -1,15 +1,12 @@
-// Language-neutral links and contact details.
-// TODO(yuliia): replace these placeholders with your real profiles before publishing.
 export const LINKS = {
-  email: "yuliia.martynovych@gmail.com",
-  github: "https://github.com/yuliiamartynovych",
-  linkedin: "https://www.linkedin.com/in/yuliiamartynovych",
+  email: "yuliiamartynovych@gmail.com",
+  github: "https://github.com/yuliimar",
+  linkedin: "https://www.linkedin.com/in/yuliia-martynovych-01570817b/",
   cv: "/cv-yuliia-martynovych.pdf",
   projects: {
-    recipes: "https://github.com/yuliiamartynovych",
-    tasks: "https://github.com/yuliiamartynovych",
-    shop: "https://github.com/yuliiamartynovych",
-    portfolio: "https://github.com/yuliiamartynovych",
+    recipes: "https://github.com/yuliimar",
+    tasks: "https://github.com/yuliimar",
+    shop: "https://github.com/yuliimar",
   },
 } as const;
 
