@@ -18,6 +18,7 @@
   &__container {
     width: min(72rem, 100%);
     margin: 0 auto;
+    text-align: left;
   }
 
   &__eyebrow {
@@ -57,18 +58,53 @@
   }
 
   &__card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: grid;
     gap: 0.9rem;
+    align-content: start;
     padding: clamp(1rem, 2.2vw, 1.35rem);
     border-radius: 1.1rem;
     border: 1px solid var(--color-border);
     background: var(--color-surface);
     box-shadow: 0 12px 34px rgb(var(--fg-rgb) / 0.1);
+    transition:
+      transform $transition-fast,
+      border-color $transition-fast,
+      box-shadow $transition-fast;
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 14rem;
+      height: 14rem;
+      right: -5rem;
+      top: -6rem;
+      border-radius: 999px;
+      background: radial-gradient(
+        circle,
+        rgb(var(--primary-rgb) / 0.16),
+        transparent 70%
+      );
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      border-color: rgb(var(--primary-rgb) / 0.34);
+      box-shadow: 0 16px 34px rgb(var(--fg-rgb) / 0.12);
+    }
+
+    @include respond-to(md) {
+      min-height: 100%;
+      padding: clamp(1.25rem, 2.6vw, 1.7rem);
+    }
   }
 
   &__card-title {
     color: var(--color-foreground);
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
     line-height: 1.25;
   }
 

@@ -13,7 +13,7 @@ export const es: Content = {
   hero: {
     role: "Frontend UI Developer / Maquetadora Web",
     tagline:
-      "Maqueto interfaces modernas, responsive y accesibles a partir de diseños en Figma.",
+      "Del diseño en Figma a una interfaz responsive, accesible y cuidada al detalle.",
   },
   about: {
     title: "Sobre mí",
@@ -40,35 +40,19 @@ export const es: Content = {
     title: "Formación y Aprendizaje",
     items: [
       {
-        period: "2024",
-        title: "Frontend Developer",
-        org: "Mate Academy",
+        period: "2024 — 2025",
+        title: "Front-end Developer",
+        org: "Mate academy",
         description:
-          "Formación práctica centrada en maquetación web, interfaces responsive, HTML, CSS, JavaScript y buenas prácticas de desarrollo frontend.",
+          "Formación en desarrollo front-end, maquetación responsive, JavaScript, HTML, CSS y Figma, con foco en interfaces modernas y buenas prácticas.",
         kind: "education",
       },
       {
-        period: "2024",
-        title: "Desarrollo de Aplicaciones Web",
-        org: "Grupo Fidsoft",
+        period: "2025",
+        title: "Desarrollo de Aplicaciones con Tecnologías Web",
+        org: "GRUPO FIDSOFT",
         description:
-          "Aprendizaje orientado a la creación de aplicaciones web, estructura de proyectos, trabajo con interfaces y fundamentos de programación.",
-        kind: "education",
-      },
-      {
-        period: "2023",
-        title: "Bienestar Integral",
-        org: "IES La Arboleda",
-        description:
-          "Formación complementaria que refuerza la comunicación, la organización personal y la atención al detalle en entornos profesionales.",
-        kind: "education",
-      },
-      {
-        period: "Ucrania",
-        title: "Complete Secondary School I-III",
-        org: "Educación secundaria",
-        description:
-          "Base académica general completada antes de continuar la formación técnica y profesional en España.",
+          "Certificado de Profesionalidad Nivel 3, equivalente a Grado Superior. 590 horas de programación web en cliente y servidor e implantación de aplicaciones.",
         kind: "education",
       },
     ],
@@ -81,25 +65,18 @@ export const es: Content = {
     cta: "Ver proyecto",
     items: [
       {
-        title: "Buscador de Recetas (PWA)",
+        title: "Catálogo de Teléfonos",
         description:
-          "Busca miles de recetas por ingrediente con una API pública, guarda favoritas sin conexión e instálala como app en cualquier dispositivo.",
-        stack: ["React", "TypeScript", "API REST", "PWA"],
-        href: LINKS.projects.recipes,
+          "Interfaz de catálogo responsive con listado de productos, navegación clara y componentes reutilizables en React.",
+        stack: ["React", "JavaScript", "CSS", "Responsive"],
+        href: LINKS.projects.catalogPhone,
       },
       {
-        title: "Gestor de Tareas (Kanban)",
+        title: "Juego 2048",
         description:
-          "Un tablero drag-and-drop para organizar tareas por columnas, con estado persistente y un diseño responsive accesible por teclado.",
-        stack: ["React", "TypeScript", "Zustand", "CSS"],
-        href: LINKS.projects.tasks,
-      },
-      {
-        title: "Tienda Demo",
-        description:
-          "Un front-end de e-commerce con catálogo, carrito y flujo de compra, hecho para practicar gestión de estado y componentes limpios.",
-        stack: ["Next.js", "TypeScript", "Stripe"],
-        href: LINKS.projects.shop,
+          "Implementación del clásico 2048 con interacción fluida, lógica de juego y una interfaz limpia adaptable a pantalla móvil.",
+        stack: ["JavaScript", "HTML", "SCSS", "Game UI"],
+        href: LINKS.projects.game2048,
       },
     ],
   },

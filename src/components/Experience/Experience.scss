@@ -12,7 +12,7 @@
   padding: clamp(3rem, 8vh, 5rem) 1.25rem;
 
   &__container {
-    width: min(64rem, 100%);
+    width: min(72rem, 100%);
     margin: 0 auto;
     text-align: center;
   }
@@ -43,12 +43,15 @@
     text-align: left;
 
     @include respond-to(md) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.25rem;
     }
   }
 
   &__card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -62,10 +65,30 @@
       border-color $transition-fast,
       box-shadow $transition-fast;
 
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: auto -18% -32% 35%;
+      height: 9rem;
+      border-radius: 999px;
+      background: radial-gradient(
+        circle,
+        rgb(var(--primary-rgb) / 0.16),
+        transparent 68%
+      );
+      opacity: 0.72;
+    }
+
     &:hover {
       transform: translateY(-3px);
       border-color: rgb(var(--primary-rgb) / 0.34);
-      box-shadow: 0 16px 34px rgb(var(--fg-rgb) / 0.1);
+      box-shadow: 0 16px 34px rgb(var(--fg-rgb) / 0.12);
+    }
+
+    @include respond-to(md) {
+      min-height: 100%;
+      padding: clamp(1.45rem, 2.8vw, 1.9rem);
     }
   }
 
@@ -98,7 +121,7 @@
   }
 
   &__role {
-    font-size: 1.05rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
     font-weight: 700;
     color: var(--color-foreground);
     margin: 0.35rem 0 0;
@@ -113,7 +136,7 @@
   }
 
   &__description {
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     line-height: 1.55;
     color: var(--color-muted);
     margin: 0;

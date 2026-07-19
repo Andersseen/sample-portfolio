@@ -76,6 +76,7 @@ html {
   background: var(--color-background);
   color: var(--color-foreground);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {

@@ -13,7 +13,7 @@ export const en: Content = {
   hero: {
     role: "Frontend UI Developer / Web Layout Developer",
     tagline:
-      "I build modern, responsive and accessible interfaces from Figma designs.",
+      "From Figma design to a responsive, accessible interface with careful visual detail.",
   },
   about: {
     title: "About Me",
@@ -40,35 +40,19 @@ export const en: Content = {
     title: "Education & Learning",
     items: [
       {
-        period: "2024",
-        title: "Frontend Developer",
-        org: "Mate Academy",
+        period: "2024 — 2025",
+        title: "Front-end Developer",
+        org: "Mate academy",
         description:
-          "Practical training focused on web layout, responsive interfaces, HTML, CSS, JavaScript and frontend development best practices.",
+          "Front-end development training covering responsive layout, JavaScript, HTML, CSS and Figma, focused on modern interfaces and best practices.",
         kind: "education",
       },
       {
-        period: "2024",
-        title: "Web Application Development",
-        org: "Grupo Fidsoft",
+        period: "2025",
+        title: "Web Application Development with Web Technologies",
+        org: "GRUPO FIDSOFT",
         description:
-          "Learning path oriented toward web application creation, project structure, interface work and programming fundamentals.",
-        kind: "education",
-      },
-      {
-        period: "2023",
-        title: "Bienestar Integral",
-        org: "IES La Arboleda",
-        description:
-          "Complementary training that strengthens communication, personal organisation and attention to detail in professional environments.",
-        kind: "education",
-      },
-      {
-        period: "Ukraine",
-        title: "Complete Secondary School I-III",
-        org: "Secondary education",
-        description:
-          "General academic foundation completed before continuing technical and professional training in Spain.",
+          "Level 3 Professional Certificate, equivalent to Higher Vocational Training. 590 hours covering client-side and server-side web programming and app deployment.",
         kind: "education",
       },
     ],
@@ -81,25 +65,18 @@ export const en: Content = {
     cta: "View project",
     items: [
       {
-        title: "Recipe Finder PWA",
+        title: "Phone Catalog",
         description:
-          "Search thousands of recipes by ingredient with a public API, save favourites offline and install it as an app on any device.",
-        stack: ["React", "TypeScript", "REST API", "PWA"],
-        href: LINKS.projects.recipes,
+          "Responsive catalog interface with product listings, clear navigation and reusable React components.",
+        stack: ["React", "JavaScript", "CSS", "Responsive"],
+        href: LINKS.projects.catalogPhone,
       },
       {
-        title: "Task Manager (Kanban)",
+        title: "2048 Game",
         description:
-          "A drag-and-drop board to organise tasks across columns, with persistent state and a keyboard-accessible, responsive layout.",
-        stack: ["React", "TypeScript", "Zustand", "CSS"],
-        href: LINKS.projects.tasks,
-      },
-      {
-        title: "Storefront Demo",
-        description:
-          "A small e-commerce front end with product listings, cart and checkout flow, built to practise state management and clean components.",
-        stack: ["Next.js", "TypeScript", "Stripe"],
-        href: LINKS.projects.shop,
+          "Implementation of the classic 2048 game with smooth interaction, game logic and a clean mobile-friendly interface.",
+        stack: ["JavaScript", "HTML", "SCSS", "Game UI"],
+        href: LINKS.projects.game2048,
       },
     ],
   },

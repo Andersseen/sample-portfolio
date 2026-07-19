@@ -4,9 +4,8 @@ export const LINKS = {
   linkedin: "https://www.linkedin.com/in/yuliia-martynovych-01570817b/",
   cv: "/cv-yuliia-martynovych.pdf",
   projects: {
-    recipes: "https://github.com/yuliimar",
-    tasks: "https://github.com/yuliimar",
-    shop: "https://github.com/yuliimar",
+    catalogPhone: "https://yuliimar.github.io/catalog-phone-react/",
+    game2048: "https://yuliimar.github.io/game-2048/",
   },
 } as const;
 

@@ -15,7 +15,7 @@ type AnimatedProps = {
   children: React.ReactNode;
 };
 
-const HOVER_COLOR = "#ff5733";
+const HOVER_COLOR = "var(--color-primary)";
 
 const animatedVariants: Variants = {
   hidden: { opacity: 0, y: "1em" },
@@ -55,9 +55,13 @@ const Animated: React.FC<AnimatedProps> = ({
         return (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.1, color: HOVER_COLOR }}
+            whileHover={{ scale: 1.08, color: HOVER_COLOR }}
             whileTap={{ scale: 0.9 }}
-            style={{ width: iconSize, height: iconSize }}
+            style={{
+              width: iconSize,
+              height: iconSize,
+              color: "var(--color-foreground)",
+            }}
           >
             {icon}
           </motion.div>

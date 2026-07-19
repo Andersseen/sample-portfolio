@@ -13,7 +13,7 @@ export const ua: Content = {
   hero: {
     role: "Frontend UI розробниця / Web Layout Developer",
     tagline:
-      "Верстаю сучасні, адаптивні та доступні інтерфейси за дизайнами з Figma.",
+      "Від дизайну у Figma до адаптивного, доступного інтерфейсу з увагою до деталей.",
   },
   about: {
     title: "Про мене",
@@ -40,35 +40,19 @@ export const ua: Content = {
     title: "Освіта та Навчання",
     items: [
       {
-        period: "2024",
-        title: "Frontend Developer",
-        org: "Mate Academy",
+        period: "2024 — 2025",
+        title: "Front-end Developer",
+        org: "Mate academy",
         description:
-          "Практичне навчання з вебверстки, адаптивних інтерфейсів, HTML, CSS, JavaScript і найкращих практик frontend-розробки.",
+          "Навчання з front-end розробки, адаптивної верстки, JavaScript, HTML, CSS і Figma з фокусом на сучасні інтерфейси та найкращі практики.",
         kind: "education",
       },
       {
-        period: "2024",
-        title: "Розробка вебзастосунків",
-        org: "Grupo Fidsoft",
+        period: "2025",
+        title: "Розробка вебзастосунків із вебтехнологіями",
+        org: "GRUPO FIDSOFT",
         description:
-          "Навчання, орієнтоване на створення вебзастосунків, структуру проєктів, роботу з інтерфейсами та основи програмування.",
-        kind: "education",
-      },
-      {
-        period: "2023",
-        title: "Bienestar Integral",
-        org: "IES La Arboleda",
-        description:
-          "Додаткове навчання, що посилило комунікацію, особисту організацію та уважність до деталей у професійному середовищі.",
-        kind: "education",
-      },
-      {
-        period: "Україна",
-        title: "Complete Secondary School I-III",
-        org: "Середня освіта",
-        description:
-          "Загальна академічна база, завершена перед подальшим технічним і професійним навчанням в Іспанії.",
+          "Професійний сертифікат рівня 3, еквівалент вищої професійної освіти. 590 годин програмування для клієнтської та серверної частини й розгортання застосунків.",
         kind: "education",
       },
     ],
@@ -81,25 +65,18 @@ export const ua: Content = {
     cta: "Переглянути проєкт",
     items: [
       {
-        title: "Пошук рецептів (PWA)",
+        title: "Каталог телефонів",
         description:
-          "Пошук тисяч рецептів за інгредієнтом через публічний API, збереження улюблених офлайн і встановлення як застосунку на будь-якому пристрої.",
-        stack: ["React", "TypeScript", "REST API", "PWA"],
-        href: LINKS.projects.recipes,
+          "Адаптивний інтерфейс каталогу з переліком товарів, зрозумілою навігацією та багаторазовими React-компонентами.",
+        stack: ["React", "JavaScript", "CSS", "Responsive"],
+        href: LINKS.projects.catalogPhone,
       },
       {
-        title: "Менеджер завдань (Kanban)",
+        title: "Гра 2048",
         description:
-          "Дошка з drag-and-drop для впорядкування завдань по колонках, зі збереженням стану та адаптивним, доступним із клавіатури інтерфейсом.",
-        stack: ["React", "TypeScript", "Zustand", "CSS"],
-        href: LINKS.projects.tasks,
-      },
-      {
-        title: "Демо-магазин",
-        description:
-          "Невеликий e-commerce фронтенд із каталогом, кошиком і оформленням замовлення — для практики керування станом і чистих компонентів.",
-        stack: ["Next.js", "TypeScript", "Stripe"],
-        href: LINKS.projects.shop,
+          "Реалізація класичної гри 2048 із плавною взаємодією, логікою гри та чистим інтерфейсом, зручним для мобільних екранів.",
+        stack: ["JavaScript", "HTML", "SCSS", "Game UI"],
+        href: LINKS.projects.game2048,
       },
     ],
   },

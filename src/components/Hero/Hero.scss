@@ -17,9 +17,8 @@
     z-index: $z-content + 1;
     color: var(--color-foreground);
     padding-inline: 1.25rem;
-    max-width: 46rem;
+    max-width: 48rem;
 
-    // Soft backdrop so the text stays legible when the lava blobs drift behind it.
     &::before {
       content: "";
       position: absolute;
@@ -37,24 +36,34 @@
   }
 
   &__title {
-    font-size: clamp(2.5rem, 8vw, 3.75rem);
+    font-size: clamp(2.8rem, 8vw, 5.8rem);
     font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
+    letter-spacing: 0;
+    line-height: 0.95;
+    margin-bottom: 0.9rem;
     text-shadow: 0 2px 18px rgb(var(--bg-rgb) / 0.55);
   }
 
   &__subtitle {
-    font-size: clamp(1.05rem, 3vw, 1.25rem);
-    font-weight: 600;
+    width: fit-content;
+    margin: 0 auto;
+    border: 1px solid rgb(var(--primary-rgb) / 0.28);
+    border-radius: 999px;
+    background: rgb(var(--bg-rgb) / 0.5);
     color: var(--color-primary);
+    font-size: clamp(0.9rem, 2vw, 1.04rem);
+    font-weight: 800;
+    line-height: 1.35;
+    padding: 0.48rem 0.82rem;
     text-shadow: 0 1px 12px rgb(var(--bg-rgb) / 0.5);
+    backdrop-filter: blur(12px);
   }
 
   &__tagline {
-    margin-top: 0.9rem;
-    font-size: clamp(0.98rem, 2.4vw, 1.15rem);
-    line-height: 1.6;
+    margin: 1rem auto 0;
+    max-width: 38rem;
+    font-size: clamp(1rem, 2.4vw, 1.22rem);
+    line-height: 1.7;
     color: var(--color-muted);
     text-wrap: balance;
   }
