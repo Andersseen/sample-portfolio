@@ -15,11 +15,11 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3
       '@andersseen/react-components':
-        specifier: ^0.2.0
-        version: 0.2.0(@andersseen/web-components@0.2.0)(@stencil/core@4.43.5)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.3.0
+        version: 0.3.0(@andersseen/web-components@0.3.0)(@stencil/core@4.43.5)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@andersseen/web-components':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.3.0
+        version: 0.3.0
       '@astrojs/check':
         specifier: ^0.9.6
         version: 0.9.6(prettier@3.8.1)(typescript@5.9.3)
@@ -77,8 +77,8 @@ packages:
     peerDependencies:
       astro: '>=4.0.0'
 
-  '@andersseen/headless-components@0.1.3':
-    resolution: {integrity: sha512-TpC4cubdcOg1RoNr98JiEqGP1oQXk1/qqAAVQUlQyQZ/LSk5L9JZDhXkuS9E/afpmbFqnHC9d2eZ10J6aBhL2w==}
+  '@andersseen/headless-components@0.2.0':
+    resolution: {integrity: sha512-BZsQiGAlDcT9moeM5zF2LAPoYHG+dmCv4kkLv+hXIjNUgV8jKPM93W2F2IKA++LEt+GvNy1l/qLQAZI8ppq8Wg==}
 
   '@andersseen/icon@0.0.3':
     resolution: {integrity: sha512-DsVSdKwlNPq0n/VPx8aTOzAUNTJ8gxEwNA/wUYc5OU34XooFNISduF9jucgHfnSPxbCLG6kLBfEGUPtSS/5zbw==}
@@ -86,15 +86,15 @@ packages:
   '@andersseen/motion@0.1.1':
     resolution: {integrity: sha512-wxH1jeJIpy1/P3DdafGQF60ePts0+/pKoF8WlGOKxOBVDgoqFzPCdli6rcHNwzLh6AU1zTSKkyIAwTtfFoynHQ==}
 
-  '@andersseen/react-components@0.2.0':
-    resolution: {integrity: sha512-PciZZVnR4QhM9YxlqL5GcJMbJ5floiXS2KP+YpZaXJTMAW/6HOS+bY9v4YN8cQ5qaceyJfToDdxRwAR7oNc8Xg==}
+  '@andersseen/react-components@0.3.0':
+    resolution: {integrity: sha512-YpexBVlSiNVqhTdNTXhwfjTnZDMISCH0BsrKL523jlEgna1Dai3eMsBsCMANSOmlz1K6Va0SkzX3ZxZctc6fhg==}
     peerDependencies:
-      '@andersseen/web-components': 0.2.0
+      '@andersseen/web-components': 0.3.0
       react: '>=17.0.0'
       react-dom: '>=17.0.0'
 
-  '@andersseen/web-components@0.2.0':
-    resolution: {integrity: sha512-qI0AcPXb7LZR4HpE+uPaJEscZeHg+CFASkHRwrfPvSZKH1YvXfMu3stgfI0u7XKpmaAx42DUSi+DUeG0CwgFrQ==}
+  '@andersseen/web-components@0.3.0':
+    resolution: {integrity: sha512-v4broZEnrwErZnBHzW60sM7j4szSUGM3C6jzhzXsgT7jB3bjZGY7LOHFncCBsA0ogqL74XaxWItYiC7ocoHJYQ==}
 
   '@astrojs/check@0.9.6':
     resolution: {integrity: sha512-jlaEu5SxvSgmfGIFfNgcn5/f+29H61NJzEMfAZ82Xopr4XBchXB1GVlcJsE+elUlsYSbXlptZLX+JMG3b/wZEA==}
@@ -2572,15 +2572,15 @@ snapshots:
     dependencies:
       astro: 5.18.0(rollup@4.59.0)(sass@1.97.3)(typescript@5.9.3)(yaml@2.8.2)
 
-  '@andersseen/headless-components@0.1.3': {}
+  '@andersseen/headless-components@0.2.0': {}
 
   '@andersseen/icon@0.0.3': {}
 
   '@andersseen/motion@0.1.1': {}
 
-  '@andersseen/react-components@0.2.0(@andersseen/web-components@0.2.0)(@stencil/core@4.43.5)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@andersseen/react-components@0.3.0(@andersseen/web-components@0.3.0)(@stencil/core@4.43.5)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@andersseen/web-components': 0.2.0
+      '@andersseen/web-components': 0.3.0
       '@stencil/react-output-target': 1.6.1(@stencil/core@4.43.5)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -2588,9 +2588,9 @@ snapshots:
       - '@stencil/core'
       - '@types/react'
 
-  '@andersseen/web-components@0.2.0':
+  '@andersseen/web-components@0.3.0':
     dependencies:
-      '@andersseen/headless-components': 0.1.3
+      '@andersseen/headless-components': 0.2.0
       '@andersseen/icon': 0.0.3
       '@andersseen/motion': 0.1.1
       class-variance-authority: 0.7.1

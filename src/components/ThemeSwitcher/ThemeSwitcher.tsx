@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { AndButton } from "@andersseen/react-components/components/and-button";
 import { AndIcon } from "@andersseen/react-components/components/and-icon";
-import "./ThemeSwitcher.scss";
 
 export default function ThemeSwitcher() {
   const [theme, setTheme] = useState(() => {
@@ -16,10 +15,10 @@ export default function ThemeSwitcher() {
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      document.documentElement.setAttribute("data-mode", "dark");
+      document.documentElement.setAttribute("and-mode", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      document.documentElement.setAttribute("data-mode", "light");
+      document.documentElement.setAttribute("and-mode", "light");
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
@@ -30,17 +29,15 @@ export default function ThemeSwitcher() {
   return (
     <AndButton
       onAndButtonClick={toggleTheme}
-      customClass="theme-switcher hover:bg-primary hover:text-primary-foreground"
+      customClass="hover:bg-primary hover:text-primary-foreground"
       size="icon"
       variant="outline"
-      aria-label="Toggle theme"
-      aria-pressed={theme === "dark"}
+      // and-button only forwards `aria-label` to its internal <button>; state
+      // attributes such as `aria-pressed` stay on the host where they mean
+      // nothing, so the label itself has to carry the current state.
+      aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
     >
-      {theme === "light" ? (
-        <AndIcon name="moon" size={20} />
-      ) : (
-        <AndIcon name="sun" size={20} />
-      )}
+      <AndIcon name={theme === "light" ? "moon" : "sun"} size={18} />
     </AndButton>
   );
 }

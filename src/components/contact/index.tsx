@@ -77,13 +77,10 @@ export const Contact = () => {
               {...FADE_UP}
               transition={fadeTransition(0.32)}
             >
-              <a
-                className="contact__cta contact__cta--primary"
-                href={mailto("Hello Yuliia")}
-              >
+              <AndButton href={mailto("Hello Yuliia")} variant="default" size="lg">
                 {contact.ctaPrimary}
-                <AndIcon name="external-link" size={18} />
-              </a>
+                <AndIcon slot="end" name="external-link" size={17} />
+              </AndButton>
               <AndButton
                 href={LINKS.cv}
                 // @ts-expect-error Stencil React wrapper does not include the

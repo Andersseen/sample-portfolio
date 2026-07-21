@@ -1,9 +1,23 @@
 // @andersseen/web-components theme mapped to the portfolio's existing color palette.
-// Imports the full component CSS so that all Tailwind utility classes used by the
-// web components are available. Color tokens are redefined below to match the
-// site's warm, glassmorphism-friendly palette.
+//
+// Tailwind-free imports: tokens + host utilities without the Preflight reset that
+// `style.css` bundles (this project's own reset lives in global.scss and would
+// fight it). The style theme has to be imported explicitly here: outside
+// `style.css` the presets are plain `:root` files, so the old
+// `<html data-theme="playful">` attribute no longer selects anything.
+// Color tokens are redefined below to match the site's warm,
+// glassmorphism-friendly palette.
 
-@import "@andersseen/web-components/style.css";
+// No palette file is imported on purpose. This file defines every colour token
+// the components read, so pulling in `colors/*.css` as well only creates a
+// conflict: those files ship a `@media (prefers-color-scheme: dark)` block
+// selecting `:root:not([and-mode='light']):not([data-mode='light'])` (0,3,0),
+// which out-specifies anything reasonable here and repaints every and-* element
+// indigo for visitors whose OS is in dark mode.
+// `playful.css` is safe — structural tokens only (radius/spacing/motion), no
+// colours and no media query.
+@import "@andersseen/web-components/themes/styles/playful.css";
+@import "@andersseen/web-components/elements.css";
 
 :root {
   /* Primary scale — derived from the portfolio's dark rose/brown accent */
@@ -66,7 +80,7 @@
 
 /* Dark mode — system preference */
 @media (prefers-color-scheme: dark) {
-  :root:not([and-mode='light']):not([data-mode='light']) {
+  :root:not([and-mode='light']) {
     --primary: 343 59% 76%;
     --primary-foreground: 315 13% 13%;
     --secondary: 21 79% 76%;
@@ -101,8 +115,7 @@
 
 /* Dark mode — explicit .dark class (used by the portfolio's theme switcher) */
 .dark,
-[and-mode='dark'],
-[data-mode='dark'] {
+[and-mode='dark'] {
   --primary: 343 59% 76%;
   --primary-foreground: 315 13% 13%;
   --secondary: 21 79% 76%;

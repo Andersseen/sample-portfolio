@@ -62,14 +62,23 @@
     }
   }
 
+  // Icon and period read as one badge, so they share a flex row: inline
+  // children would otherwise sit on the text baseline and drop the icon.
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 0 0.85rem;
+  }
+
   &__icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 0.85rem;
-    margin-bottom: 0.9rem;
+    flex: 0 0 auto;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 0.7rem;
 
     &--education {
       color: var(--color-primary);

@@ -23,6 +23,13 @@
     pointer-events: auto;
   }
 
+  // On mobile the trigger and the panel keep their own chrome, so the bar is a
+  // pure grouping element. On desktop it becomes the single nav pill (see the
+  // 920px block below) that holds the avatar toggle and the panel together.
+  &__bar {
+    display: contents;
+  }
+
   &__trigger {
     margin-top: 0;
     border: 1px solid var(--color-border);
@@ -94,10 +101,11 @@
 }
 
 .site-nav {
-  --nav-control-size: 2.15rem;
+  // Matches the 2.5rem that `and-button size="icon"` resolves to at this
+  // breakpoint, so the hand-rolled language trigger lines up with the
+  // library buttons sitting next to it.
+  --nav-control-size: 2.5rem;
   --nav-control-radius: var(--radius);
-  --theme-switcher-size: var(--nav-control-size);
-  --theme-switcher-icon-size: 1.2rem;
 
   display: none;
   border: 1px solid var(--color-border);
@@ -206,10 +214,6 @@
       flex-shrink: 0;
     }
   }
-
-  &__collapse {
-    // Replaced by an and-button; keep this class only as a layout hook.
-  }
 }
 
 .lang-picker {
@@ -302,42 +306,88 @@
 @media (min-width: 920px) {
   .site-header--desktop {
     .site-header__dock {
-      justify-content: flex-end;
+      justify-content: flex-start;
       align-items: center;
     }
 
+    // The bar is the pill: avatar toggle on the left, panel to its right, one
+    // border and one shadow for both. It shrink-wraps, so collapsing the panel
+    // leaves a small pill around the avatar alone.
+    .site-header__bar {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex: 0 1 auto;
+      min-width: 0;
+      padding: 0.4rem;
+      border: 1px solid var(--color-border);
+      background: rgb(var(--bg-rgb) / 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 12px 30px rgb(var(--fg-rgb) / 0.13);
+      border-radius: calc(var(--radius) + 0.4rem);
+      transition: flex-grow var(--nav-duration) var(--nav-ease);
+    }
+
+    &.is-open .site-header__bar {
+      flex-grow: 1;
+    }
+
+    // The pill supplies the chrome now, so the toggle is just the avatar chip.
     .site-header__trigger {
-      order: 2;
+      order: 1;
       flex: 0 0 auto;
+      border-color: transparent;
+      background: transparent;
+      backdrop-filter: none;
+      box-shadow: none;
+
+      &:hover {
+        background: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .site-header__trigger--avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    // Slightly inset in the 2.5rem hit area so the button border-box does not
+    // squeeze it out of square.
+    .site-header__avatar {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.7rem;
     }
 
     .site-nav {
-      order: 1;
+      order: 2;
       flex: 1;
       display: grid;
       grid-template-columns: auto 1fr auto;
       align-items: center;
       gap: 0.7rem;
-      min-height: 2.9rem;
+      min-height: 2.5rem;
       max-width: 0;
       opacity: 0;
       overflow: hidden;
       white-space: nowrap;
       visibility: hidden;
-      padding: 0.62rem 0;
-      border-width: 1px;
-      box-shadow: 0 8px 18px rgb(var(--fg-rgb) / 0);
+      padding: 0;
+      border: 0;
+      background: none;
+      backdrop-filter: none;
+      box-shadow: none;
       pointer-events: none;
-      transform-origin: right center;
-      transform: translateX(0.35rem) scaleX(0.96);
-      clip-path: inset(0 0 0 100% round 1rem);
+      transform-origin: left center;
+      transform: translateX(-0.35rem) scaleX(0.96);
+      clip-path: inset(0 100% 0 0);
       transition:
         max-width var(--nav-duration) var(--nav-ease),
         padding var(--nav-duration) var(--nav-ease),
         clip-path var(--nav-duration) var(--nav-ease),
         transform var(--nav-duration) var(--nav-ease),
         opacity 0.22s ease,
-        box-shadow 0.3s ease,
         visibility 0s linear var(--nav-duration);
     }
 
@@ -345,7 +395,7 @@
     .site-nav__links,
     .site-nav__controls {
       opacity: 0;
-      transform: translateX(0.8rem);
+      transform: translateX(-0.8rem);
       transition:
         opacity 0.18s ease,
         transform 0.28s var(--nav-ease);
@@ -354,19 +404,17 @@
     &.is-open .site-nav {
       max-width: 66rem;
       opacity: 1;
-      padding: 0.62rem 1rem;
-      box-shadow: 0 12px 30px rgb(var(--fg-rgb) / 0.13);
+      padding: 0 0.35rem 0 0.25rem;
       pointer-events: auto;
       visibility: visible;
       transform: translateX(0) scaleX(1);
-      clip-path: inset(0 0 0 0 round 1rem);
+      clip-path: inset(0 0 0 0);
       transition:
         max-width var(--nav-duration) var(--nav-ease),
         padding var(--nav-duration) var(--nav-ease),
         clip-path var(--nav-duration) var(--nav-ease),
         transform var(--nav-duration) var(--nav-ease),
         opacity 0.22s ease,
-        box-shadow 0.35s ease,
         visibility 0s linear 0s;
     }
 

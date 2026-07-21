@@ -3,6 +3,10 @@
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "and-web-components": {
+      "command": "npx",
+      "args": ["-y", "@andersseen/mcp"]
     }
   }
 }
