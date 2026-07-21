@@ -82,6 +82,28 @@
 }
 
 // ======================
+// Gooey bubble surface (Hero)
+// ======================
+
+// One transform-only animation instead of the reference pen's separate
+// bubble-size (width/height) and bubble-move (bottom) pair. `translate(-50%,
+// 100%)` is the resting offset: centred on --position and pushed fully down
+// inside the liquid, so the bubble is hidden until it rises out.
+@keyframes bubble-rise {
+  0% {
+    transform: translate(-50%, 100%) translateY(0) scale(1);
+  }
+  75% {
+    transform: translate(-50%, 100%) translateY(calc(var(--distance, 10rem) * -0.75))
+      scale(1);
+  }
+  100% {
+    transform: translate(-50%, 100%) translateY(calc(var(--distance, 10rem) * -1))
+      scale(0);
+  }
+}
+
+// ======================
 // Marquee Animation (Skills)
 // ======================
 

@@ -128,10 +128,53 @@
       height: 4%;
       top: -3%;
     }
+  }
 
-    &--bottom {
-      height: 4.5%;
-      bottom: -3%;
+  // Replaces the old static bottom edge: same liquid line, but bubbles now
+  // break out of it.
+  &__surface {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3%;
+    height: 7%;
+    background: linear-gradient(
+      to right,
+      var(--lava-edge-start),
+      var(--lava-edge-end)
+    );
+    filter: url("#goo-surface");
+  }
+
+  &__bubble {
+    position: absolute;
+    left: var(--position, 50%);
+    bottom: 100%;
+    width: calc(var(--size, 4rem) * var(--bubble-scale, 1));
+    height: calc(var(--size, 4rem) * var(--bubble-scale, 1));
+    border-radius: 50%;
+    background: linear-gradient(
+      to right,
+      var(--lava-edge-start),
+      var(--lava-edge-end)
+    );
+    // The pen animates width/height/bottom. Those are layout properties, so
+    // every bubble would reflow on every frame; transform gets the same shape
+    // on the compositor instead.
+    animation: bubble-rise var(--time, 4s) ease-in infinite var(--delay, 0s);
+    will-change: transform;
+  }
+
+  // The bubble count is tuned for a wide viewport. On a phone the same 32
+  // bubbles at the same size overlap into one flat blob and the effect reads as
+  // a plain gradient, so half of them go and the rest shrink.
+  @media (max-width: 640px) {
+    &__surface {
+      --bubble-scale: 0.55;
+    }
+
+    &__bubble:nth-child(even) {
+      display: none;
     }
   }
 
@@ -139,5 +182,19 @@
     position: absolute;
     width: 0;
     height: 0;
+  }
+}
+
+// Everything here is decorative motion, so it all stops together. The bubbles
+// are held at their resting offset, which leaves them tucked inside the
+// surface rather than frozen mid-air.
+@media (prefers-reduced-motion: reduce) {
+  .lava-lamp__blob,
+  .lava-lamp__bubble {
+    animation: none;
+  }
+
+  .lava-lamp__bubble {
+    transform: translate(-50%, 100%);
   }
 }
