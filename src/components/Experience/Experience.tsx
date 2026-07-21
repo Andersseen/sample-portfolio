@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { useLang } from "@/lib/useLang";
+import { AndCard } from "@andersseen/react-components/components/and-card";
+import { AndCardContent } from "@andersseen/react-components/components/and-card-content";
+import { AndCardDescription } from "@andersseen/react-components/components/and-card-description";
+import { AndCardHeader } from "@andersseen/react-components/components/and-card-header";
+import { AndCardTitle } from "@andersseen/react-components/components/and-card-title";
 import "./Experience.scss";
 
 const cardVariants = {
@@ -30,7 +35,6 @@ const Experience = () => {
 
             return (
               <motion.li
-                className="experience__card"
                 key={`${item.period}-${item.title}`}
                 variants={cardVariants}
                 initial="hidden"
@@ -38,16 +42,28 @@ const Experience = () => {
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ delay: index * 0.08 }}
               >
-                <span
-                  className={`experience__icon experience__icon--${item.kind}`}
-                  aria-hidden="true"
-                >
-                  <Icon size={18} />
-                </span>
-                <span className="experience__period">{item.period}</span>
-                <h3 className="experience__role">{item.title}</h3>
-                <p className="experience__org">{item.org}</p>
-                <p className="experience__description">{item.description}</p>
+                <AndCard customClass="experience__card" variant="outline">
+                  <AndCardHeader>
+                    <AndCardTitle customClass="experience__role" level={3}>
+                      {item.title}
+                    </AndCardTitle>
+                    <AndCardDescription customClass="experience__org">
+                      {item.org}
+                    </AndCardDescription>
+                  </AndCardHeader>
+                  <AndCardContent>
+                    <span
+                      className={`experience__icon experience__icon--${item.kind}`}
+                      aria-hidden="true"
+                    >
+                      <Icon size={18} />
+                    </span>
+                    <span className="experience__period">{item.period}</span>
+                    <p className="experience__description">
+                      {item.description}
+                    </p>
+                  </AndCardContent>
+                </AndCard>
               </motion.li>
             );
           })}

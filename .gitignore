@@ -3,6 +3,12 @@ dist/
 
 # generated types
 .astro/
+.playwright-mcp/
+
+# temporary screenshots at repo root
+/*.png
+/*.jpg
+/*.jpeg
 
 # dependencies
 node_modules/

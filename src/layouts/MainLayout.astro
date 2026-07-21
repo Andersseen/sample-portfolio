@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Navbar from '@/components/Navbar/Navbar';
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop';
 import '../styles/global.scss';
 
 interface Props {
@@ -16,7 +17,7 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 ---
 
-<html lang="en">
+<html lang="en" data-theme="playful">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,8 +42,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 
         const storedTheme = localStorage.getItem("theme");
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (storedTheme ? storedTheme === "dark" : prefersDark) {
+        const isDark = storedTheme ? storedTheme === "dark" : prefersDark;
+        if (isDark) {
           root.classList.add("dark");
+          root.setAttribute("data-mode", "dark");
+        } else {
+          root.setAttribute("data-mode", "light");
         }
 
         const langMap = { EN: "en", ES: "es", UA: "uk" };
@@ -57,5 +62,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
   <body>
     <Navbar client:load />
     <slot />
+    <ScrollToTop client:load />
   </body>
 </html>

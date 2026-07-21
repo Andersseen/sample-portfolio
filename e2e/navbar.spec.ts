@@ -10,6 +10,15 @@ test("desktop navbar morphs from a stable avatar anchor", async ({ page }) => {
 
   await expect(trigger).toBeVisible();
 
+  // The navbar starts open on desktop; close it first to measure the collapsed
+  // baseline, then open it again for the main assertion.
+  const navIsOpen = await nav.evaluate((el) => el.classList.contains("is-open"));
+  if (navIsOpen) {
+    await trigger.click();
+    await page.mouse.move(20, 20);
+    await page.waitForTimeout(650);
+  }
+
   const closedTrigger = await trigger.boundingBox();
   const closedNav = await nav.boundingBox();
 

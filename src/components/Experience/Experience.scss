@@ -49,46 +49,16 @@
   }
 
   &__card {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    backdrop-filter: blur(10px);
-    border-radius: 1.1rem;
-    padding: clamp(1.25rem, 2.4vw, 1.6rem);
+    height: 100%;
     transition:
       transform $transition-fast,
       border-color $transition-fast,
       box-shadow $transition-fast;
 
-    &::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: auto -18% -32% 35%;
-      height: 9rem;
-      border-radius: 999px;
-      background: radial-gradient(
-        circle,
-        rgb(var(--primary-rgb) / 0.16),
-        transparent 68%
-      );
-      opacity: 0.72;
-    }
-
     &:hover {
       transform: translateY(-3px);
-      border-color: rgb(var(--primary-rgb) / 0.34);
-      box-shadow: 0 16px 34px rgb(var(--fg-rgb) / 0.12);
-    }
-
-    @include respond-to(md) {
-      min-height: 100%;
-      padding: clamp(1.45rem, 2.8vw, 1.9rem);
     }
   }
 

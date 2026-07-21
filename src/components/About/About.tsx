@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import lottie from "lottie-web";
-import { Download } from "lucide-react";
 import { useLang } from "@/lib/useLang";
 import { LINKS } from "@/data/content";
+import { AndButton } from "@andersseen/react-components/components/and-button";
+import { AndIcon } from "@andersseen/react-components/components/and-icon";
 import "./About.scss";
 
 const containerVariants = {
@@ -80,10 +81,19 @@ const About = () => {
           >
             {about.cta}
           </motion.a>
-          <a href={LINKS.cv} className="about__cv" download>
-            <Download size={17} aria-hidden="true" />
+          <AndButton
+            href={LINKS.cv}
+            // @ts-expect-error Stencil React wrapper does not include the
+            // standard HTML `download` attribute in its generated types, but
+            // the underlying <a> element still receives it at runtime.
+            download
+            variant="outline"
+            size="default"
+            customClass="about__cv hover:bg-primary hover:text-primary-foreground"
+          >
+            <AndIcon slot="start" name="download" size={17} />
             {about.cvCta}
-          </a>
+          </AndButton>
         </motion.div>
       </motion.div>
     </section>

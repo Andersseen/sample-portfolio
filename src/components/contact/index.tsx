@@ -1,16 +1,10 @@
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowUpRight,
-  CalendarCheck2,
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  type LucideIcon,
-} from "lucide-react";
+import { CalendarCheck2, Github, Linkedin, Mail, type LucideIcon } from "lucide-react";
 import { useRef } from "react";
 import { useLang } from "@/lib/useLang";
 import { LINKS, mailto } from "@/data/content/links";
+import { AndButton } from "@andersseen/react-components/components/and-button";
+import { AndIcon } from "@andersseen/react-components/components/and-icon";
 import "./contact.scss";
 
 const FADE_UP = {
@@ -88,16 +82,21 @@ export const Contact = () => {
                 href={mailto("Hello Yuliia")}
               >
                 {contact.ctaPrimary}
-                <ArrowUpRight size={18} aria-hidden="true" />
+                <AndIcon name="external-link" size={18} />
               </a>
-              <a
-                className="contact__cta contact__cta--ghost"
+              <AndButton
                 href={LINKS.cv}
+                // @ts-expect-error Stencil React wrapper does not include the
+                // standard HTML `download` attribute in its generated types, but
+                // the underlying <a> element still receives it at runtime.
                 download
+                variant="outline"
+                size="lg"
+                customClass="contact__cta-ghost hover:bg-primary hover:text-primary-foreground"
               >
-                <Download size={17} aria-hidden="true" />
+                <AndIcon slot="start" name="download" size={17} />
                 {contact.ctaSecondary}
-              </a>
+              </AndButton>
             </motion.div>
 
             <motion.div
@@ -160,11 +159,9 @@ export const Contact = () => {
                         {action.description}
                       </span>
                     </span>
-                    <ArrowUpRight
-                      size={16}
-                      className="contact__action-arrow"
-                      aria-hidden="true"
-                    />
+                    <span className="contact__action-arrow" aria-hidden="true">
+                      <AndIcon name="external-link" size={16} />
+                    </span>
                   </a>
                 );
               })}

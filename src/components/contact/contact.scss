@@ -123,7 +123,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.78rem 1.1rem;
-    border-radius: 9999px;
+    border-radius: var(--radius);
     text-decoration: none;
     font-weight: 600;
     line-height: 1;
@@ -152,17 +152,12 @@
         box-shadow: 0 14px 34px rgb(var(--secondary-rgb) / 0.32);
       }
     }
+  }
 
-    &--ghost {
-      color: var(--color-foreground);
-      border: 1px solid var(--color-border);
-      background: var(--color-surface);
-
-      &:hover {
-        transform: translateY(-2px);
-        background: var(--color-surface-strong);
-      }
-    }
+  &__cta-ghost {
+    // The and-button variant="outline" size="lg" already provides the
+    // visual style; this class is kept for identification and possible
+    // layout tweaks without fighting the component's Shadow DOM.
   }
 
   &__socials {
@@ -180,7 +175,7 @@
     text-decoration: none;
     font-size: 0.95rem;
     padding: 0.35rem 0.65rem;
-    border-radius: 9999px;
+    border-radius: var(--radius);
     transition: background-color $transition-fast;
 
     &:hover {

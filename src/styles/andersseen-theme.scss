@@ -1,0 +1,135 @@
+// @andersseen/web-components theme mapped to the portfolio's existing color palette.
+// Imports the full component CSS so that all Tailwind utility classes used by the
+// web components are available. Color tokens are redefined below to match the
+// site's warm, glassmorphism-friendly palette.
+
+@import "@andersseen/web-components/style.css";
+
+:root {
+  /* Primary scale — derived from the portfolio's dark rose/brown accent */
+  --primary-50: 341 35% 95%;
+  --primary-100: 341 35% 90%;
+  --primary-200: 341 35% 80%;
+  --primary-300: 341 37% 70%;
+  --primary-400: 341 37% 60%;
+  --primary-500: 341 37% 48%;
+  --primary-600: 341 37% 40%;
+  --primary-700: 341 37% 32%;
+  --primary-800: 341 37% 24%;
+  --primary-900: 341 37% 16%;
+  --primary-950: 341 37% 8%;
+
+  /* Secondary scale — derived from the portfolio's warm peach/apricot accent */
+  --secondary-50: 22 50% 96%;
+  --secondary-100: 22 60% 90%;
+  --secondary-200: 22 65% 82%;
+  --secondary-300: 22 68% 75%;
+  --secondary-400: 22 70% 75%;
+  --secondary-500: 22 70% 60%;
+  --secondary-600: 22 70% 50%;
+  --secondary-700: 22 70% 40%;
+  --secondary-800: 22 70% 30%;
+  --secondary-900: 22 70% 20%;
+  --secondary-950: 22 70% 10%;
+
+  /* Semantic tokens — light mode */
+  --primary: 341 37% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 22 70% 70%;
+  --secondary-foreground: 332 13% 26%;
+
+  --background: 27 50% 96%;
+  --foreground: 332 13% 26%;
+  --card: 27 40% 98%;
+  --card-foreground: 332 13% 26%;
+  --popover: 27 40% 98%;
+  --popover-foreground: 332 13% 26%;
+
+  --muted: 27 30% 92%;
+  --muted-foreground: 332 10% 45%;
+  --accent: 22 70% 70%;
+  --accent-foreground: 332 13% 26%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 332 13% 26% / 0.12;
+  --input: 332 13% 26% / 0.12;
+  --ring: 341 37% 48%;
+
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 217 91% 60%;
+  --info-foreground: 0 0% 100%;
+}
+
+/* Dark mode — system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([and-mode='light']):not([data-mode='light']) {
+    --primary: 343 59% 76%;
+    --primary-foreground: 315 13% 13%;
+    --secondary: 21 79% 76%;
+    --secondary-foreground: 19 48% 92%;
+
+    --background: 315 13% 13%;
+    --foreground: 19 48% 92%;
+    --card: 315 13% 11%;
+    --card-foreground: 19 48% 92%;
+    --popover: 315 13% 11%;
+    --popover-foreground: 19 48% 92%;
+
+    --muted: 315 13% 20%;
+    --muted-foreground: 19 30% 70%;
+    --accent: 21 79% 76%;
+    --accent-foreground: 315 13% 13%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 86% 97%;
+    --border: 19 48% 92% / 0.16;
+    --input: 19 48% 92% / 0.16;
+    --ring: 343 59% 76%;
+
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 90% 56%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 85% 65%;
+    --info-foreground: 0 0% 100%;
+  }
+}
+
+/* Dark mode — explicit .dark class (used by the portfolio's theme switcher) */
+.dark,
+[and-mode='dark'],
+[data-mode='dark'] {
+  --primary: 343 59% 76%;
+  --primary-foreground: 315 13% 13%;
+  --secondary: 21 79% 76%;
+  --secondary-foreground: 19 48% 92%;
+
+  --background: 315 13% 13%;
+  --foreground: 19 48% 92%;
+  --card: 315 13% 11%;
+  --card-foreground: 19 48% 92%;
+  --popover: 315 13% 11%;
+  --popover-foreground: 19 48% 92%;
+
+  --muted: 315 13% 20%;
+  --muted-foreground: 19 30% 70%;
+  --accent: 21 79% 76%;
+  --accent-foreground: 315 13% 13%;
+
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 86% 97%;
+  --border: 19 48% 92% / 0.16;
+  --input: 19 48% 92% / 0.16;
+  --ring: 343 59% 76%;
+
+  --success: 142 70% 45%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 90% 56%;
+  --warning-foreground: 0 0% 100%;
+  --info: 217 85% 65%;
+  --info-foreground: 0 0% 100%;
+}

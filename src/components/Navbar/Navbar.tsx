@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
+import { AndButton } from "@andersseen/react-components/components/and-button";
 import { useLang } from "@/lib/useLang";
 import { LANG_OPTIONS } from "@/data/content";
+import { AndIcon } from "@andersseen/react-components/components/and-icon";
 import "./Navbar.scss";
 
 const NAV_ITEMS = [
@@ -218,9 +219,9 @@ export default function Navbar() {
               YM
             </span>
           ) : panelOpen ? (
-            <X size={18} />
+            <AndIcon name="close" size={18} />
           ) : (
-            <Menu size={18} />
+            <AndIcon name="menu" size={18} />
           )}
         </button>
 
@@ -271,7 +272,8 @@ export default function Navbar() {
                 onClick={() => setLangOpen((prev) => !prev)}
               >
                 {lang}
-                <ChevronDown
+                <AndIcon
+                  name="chevron-down"
                   size={15}
                   className={
                     langOpen
@@ -313,14 +315,16 @@ export default function Navbar() {
 
             <ThemeSwitcher />
             {isDesktop && desktopNavOpen && (
-              <button
+              <AndButton
                 type="button"
-                className="site-nav__collapse"
-                onClick={() => setDesktopNavOpen(false)}
+                size="icon"
+                variant="outline"
+                customClass="site-nav__collapse hover:bg-primary hover:text-primary-foreground"
+                onAndButtonClick={() => setDesktopNavOpen(false)}
                 aria-label="Collapse navigation"
               >
-                <X size={16} />
-              </button>
+                <AndIcon name="close" size={16} />
+              </AndButton>
             )}
           </div>
         </nav>
