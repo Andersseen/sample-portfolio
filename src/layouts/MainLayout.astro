@@ -17,7 +17,10 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 ---
 
-<html lang="en" data-theme="playful">
+<!-- The "playful" style theme is imported directly in andersseen-theme.scss: outside
+     the bundled style.css the presets are plain `:root` files, so a theme attribute
+     here would not select anything. -->
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,9 +48,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
         const isDark = storedTheme ? storedTheme === "dark" : prefersDark;
         if (isDark) {
           root.classList.add("dark");
-          root.setAttribute("data-mode", "dark");
+          root.setAttribute("and-mode", "dark");
         } else {
-          root.setAttribute("data-mode", "light");
+          root.setAttribute("and-mode", "light");
         }
 
         const langMap = { EN: "en", ES: "es", UA: "uk" };

@@ -52,13 +52,15 @@ const Experience = () => {
                     </AndCardDescription>
                   </AndCardHeader>
                   <AndCardContent>
-                    <span
-                      className={`experience__icon experience__icon--${item.kind}`}
-                      aria-hidden="true"
-                    >
-                      <Icon size={18} />
-                    </span>
-                    <span className="experience__period">{item.period}</span>
+                    <p className="experience__meta">
+                      <span
+                        className={`experience__icon experience__icon--${item.kind}`}
+                        aria-hidden="true"
+                      >
+                        <Icon size={16} />
+                      </span>
+                      <span className="experience__period">{item.period}</span>
+                    </p>
                     <p className="experience__description">
                       {item.description}
                     </p>

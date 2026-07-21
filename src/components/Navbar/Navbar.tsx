@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
-import { AndButton } from "@andersseen/react-components/components/and-button";
 import { useLang } from "@/lib/useLang";
 import { LANG_OPTIONS } from "@/data/content";
 import { AndIcon } from "@andersseen/react-components/components/and-icon";
@@ -198,136 +197,126 @@ export default function Navbar() {
       className={`site-header ${isDesktop ? "site-header--desktop" : "site-header--mobile"} ${panelOpen ? "is-open" : ""}`}
     >
       <div className="site-header__dock">
-        <button
-          className={`site-header__trigger ${isDesktop ? "site-header__trigger--avatar" : "site-header__trigger--menu"}`}
-          type="button"
-          aria-expanded={panelOpen}
-          aria-controls="site-nav-panel"
-          onClick={handlePrimaryToggle}
-          aria-label={
-            isDesktop
-              ? panelOpen
-                ? "Collapse navigation"
-                : "Expand navigation"
-              : panelOpen
-                ? "Close menu"
-                : "Open menu"
-          }
-        >
-          {isDesktop ? (
-            <span className="site-header__avatar" aria-hidden="true">
-              YM
-            </span>
-          ) : panelOpen ? (
-            <AndIcon name="close" size={18} />
-          ) : (
-            <AndIcon name="menu" size={18} />
-          )}
-        </button>
-
-        <nav
-          id="site-nav-panel"
-          className={`site-nav ${panelOpen ? "is-open" : ""} ${langOpen ? "site-nav--lang-open" : ""}`}
-          aria-label="Primary"
-        >
-          <a
-            className="site-nav__brand"
-            href="#home"
-            onClick={() => handleNavClick("#home")}
+        <div className="site-header__bar">
+          <button
+            className={`site-header__trigger ${isDesktop ? "site-header__trigger--avatar" : "site-header__trigger--menu"}`}
+            type="button"
+            aria-expanded={panelOpen}
+            aria-controls="site-nav-panel"
+            onClick={handlePrimaryToggle}
+            aria-label={
+              isDesktop
+                ? panelOpen
+                  ? "Collapse navigation"
+                  : "Expand navigation"
+                : panelOpen
+                  ? "Close menu"
+                  : "Open menu"
+            }
           >
-            <span className="site-nav__logo" aria-hidden="true">
-              YM
-            </span>
-            <span className="site-nav__brand-text">
-              <span className="site-nav__brand-name">Yuliia Martynovych</span>
-              <span className="site-nav__brand-role">Portfolio</span>
-            </span>
-          </a>
-
-          <ul className="site-nav__links">
-            {NAV_ITEMS.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className={
-                    activeHash === link.href
-                      ? "site-nav__link is-active"
-                      : "site-nav__link"
-                  }
-                >
-                  {content.nav[link.key]}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="site-nav__controls">
-            <div className="lang-picker" ref={langPickerRef}>
-              <button
-                className="lang-picker__trigger"
-                type="button"
-                aria-haspopup="listbox"
-                aria-expanded={langOpen}
-                onClick={() => setLangOpen((prev) => !prev)}
-              >
-                {lang}
-                <AndIcon
-                  name="chevron-down"
-                  size={15}
-                  className={
-                    langOpen
-                      ? "lang-picker__chevron is-open"
-                      : "lang-picker__chevron"
-                  }
-                />
-              </button>
-
-              {langOpen && (
-                <ul
-                  className="lang-picker__menu"
-                  role="listbox"
-                  aria-label="Select language"
-                >
-                  {LANG_OPTIONS.map((option) => (
-                    <li key={option}>
-                      <button
-                        type="button"
-                        role="option"
-                        aria-selected={lang === option}
-                        className={
-                          lang === option
-                            ? "lang-picker__option is-selected"
-                            : "lang-picker__option"
-                        }
-                        onClick={() => {
-                          changeLang(option);
-                          setLangOpen(false);
-                        }}
-                      >
-                        {option}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-
-            <ThemeSwitcher />
-            {isDesktop && desktopNavOpen && (
-              <AndButton
-                type="button"
-                size="icon"
-                variant="outline"
-                customClass="site-nav__collapse hover:bg-primary hover:text-primary-foreground"
-                onAndButtonClick={() => setDesktopNavOpen(false)}
-                aria-label="Collapse navigation"
-              >
-                <AndIcon name="close" size={16} />
-              </AndButton>
+            {isDesktop ? (
+              <span className="site-header__avatar" aria-hidden="true">
+                YM
+              </span>
+            ) : panelOpen ? (
+              <AndIcon name="close" size={18} />
+            ) : (
+              <AndIcon name="menu" size={18} />
             )}
-          </div>
-        </nav>
+          </button>
+
+          <nav
+            id="site-nav-panel"
+            className={`site-nav ${panelOpen ? "is-open" : ""} ${langOpen ? "site-nav--lang-open" : ""}`}
+            aria-label="Primary"
+          >
+            <a
+              className="site-nav__brand"
+              href="#home"
+              onClick={() => handleNavClick("#home")}
+            >
+              <span className="site-nav__logo" aria-hidden="true">
+                YM
+              </span>
+              <span className="site-nav__brand-text">
+                <span className="site-nav__brand-name">Yuliia Martynovych</span>
+                <span className="site-nav__brand-role">Portfolio</span>
+              </span>
+            </a>
+
+            <ul className="site-nav__links">
+              {NAV_ITEMS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className={
+                      activeHash === link.href
+                        ? "site-nav__link is-active"
+                        : "site-nav__link"
+                    }
+                  >
+                    {content.nav[link.key]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="site-nav__controls">
+              <div className="lang-picker" ref={langPickerRef}>
+                <button
+                  className="lang-picker__trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded={langOpen}
+                  onClick={() => setLangOpen((prev) => !prev)}
+                >
+                  {lang}
+                  <AndIcon
+                    name="chevron-down"
+                    size={15}
+                    className={
+                      langOpen
+                        ? "lang-picker__chevron is-open"
+                        : "lang-picker__chevron"
+                    }
+                  />
+                </button>
+
+                {langOpen && (
+                  <ul
+                    className="lang-picker__menu"
+                    role="listbox"
+                    aria-label="Select language"
+                  >
+                    {LANG_OPTIONS.map((option) => (
+                      <li key={option}>
+                        <button
+                          type="button"
+                          role="option"
+                          aria-selected={lang === option}
+                          className={
+                            lang === option
+                              ? "lang-picker__option is-selected"
+                              : "lang-picker__option"
+                          }
+                          onClick={() => {
+                            changeLang(option);
+                            setLangOpen(false);
+                          }}
+                        >
+                          {option}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+
+              <ThemeSwitcher />
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   );
